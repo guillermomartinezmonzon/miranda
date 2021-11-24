@@ -1,27 +1,16 @@
-// import React, { useEffect, useState } from "react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SideMenu from "../../components/SideMenu/SideMenu";
-import { selector, setContactList } from "../../redux/ContactSlice";
-// import { getContact } from "../../utils/getData";
-
-// import { useDispatch } from "react-redux";
-// import { setContactList } from "../redux/ContactSlice";
-
-// export const populateContactList = async () => {
-//   const dispatch = useDispatch();
-//   dispatch(setContactList(await getContact()));
-// };
+import { selector, fetchContactList } from "../../redux/ContactSlice";
 
 export default function Contact() {
-  //const [contact, setContact] = useState([]);
-
   const dispatch = useDispatch();
 
   const { contactList, loading } = useSelector(selector);
 
   useEffect(() => {
-    dispatch(setContactList());
+    console.log(dispatch);
+    dispatch(fetchContactList());
   }, []);
 
   function renderTableContact() {
