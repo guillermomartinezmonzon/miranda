@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SideMenu from "../../components/SideMenu";
+import SideMenu from "../../components/SideMenu/SideMenu";
 
-export default function Guest() {
+export default function Booking() {
   return (
     <div>
-      <h1>Guest</h1>
+      <h1>Booking</h1>
       <SideMenu />
       <Link to="/">return</Link>
     </div>

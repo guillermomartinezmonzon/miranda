@@ -1,6 +1,6 @@
 // Custom Hook
 
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function useToken() {
   const getToken = () => {
@@ -22,14 +22,25 @@ export default function useToken() {
   };
 }
 
-export async function fetchToken(credentials) {
-  return fetch("http://localhost:8080/login", {
-    method: "POST",
+// export async function fetchToken(credentials) {
+//   return fetch("http://localhost:8080/login", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(credentials),
+//   })
+//     .then((data) => data.json())
+//     .catch((e) => console.log(e));
+// }
+
+export function fetchToken() {
+  return fetch("data/token.json", {
     headers: {
       "Content-Type": "application/json",
+      Accept: "application/json",
     },
-    body: JSON.stringify(credentials),
   })
-    .then((data) => data.json())
+    .then((res) => res.json())
     .catch((e) => console.log(e));
 }

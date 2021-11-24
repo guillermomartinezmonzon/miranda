@@ -1,11 +1,12 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import Concierge from "./pages/Concierge/Concierge";
-import Guests from "./pages/Guests/Guests";
-import Reviews from "./pages/Reviews/Reviews";
+import Users from "./pages/Users/Users";
+import Bookings from "./pages/Bookings/Bookings";
+import Booking from "./pages/Bookings/Booking";
+import Contact from "./pages/Contact/Contact";
 import Rooms from "./pages/Rooms/Rooms";
-import Guest from "./pages/Guests/Guest";
+
 import PrivateRoute from "./components/PrivateRoute";
 import Login from "./pages/Login/Login";
 import useToken from "./utils/useToken";
@@ -22,10 +23,10 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route
-            path="guests"
+            path="bookings"
             element={
               <PrivateRoute>
-                <Guests />
+                <Bookings />
               </PrivateRoute>
             }
           >
@@ -33,16 +34,16 @@ export default function App() {
               path=":guestId"
               element={
                 <PrivateRoute>
-                  <Guest />
+                  <Booking />
                 </PrivateRoute>
               }
             />
           </Route>
           <Route
-            path="reviews"
+            path="contact"
             element={
               <PrivateRoute>
-                <Reviews />
+                <Contact />
               </PrivateRoute>
             }
           />
@@ -55,10 +56,10 @@ export default function App() {
             }
           />
           <Route
-            path="concierge"
+            path="users"
             element={
               <PrivateRoute>
-                <Concierge />
+                <Users />
               </PrivateRoute>
             }
           />

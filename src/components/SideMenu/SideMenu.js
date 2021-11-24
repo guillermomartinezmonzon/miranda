@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 export default function SideMenu() {
   return (
     <nav>
-      <Link to="/concierge">Concierge</Link>
+      <Link to="/users">Users</Link>
       <br />
       <br />
       <Link to="/">Dashboard</Link>
       <br />
       <br />
-      <Link to="/guests">Guests</Link>
+      <Link to="/bookings">Bookings</Link>
       <br />
       <br />
-      <Link to="/reviews">Reviews</Link>
+      <Link to="/contact">Contact</Link>
       <br />
       <br />
       <Link to="/rooms">Rooms</Link>

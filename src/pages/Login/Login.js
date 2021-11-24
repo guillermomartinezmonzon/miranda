@@ -8,11 +8,8 @@ export default function Login({ setToken }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = await fetchToken({
-      username,
-      password,
-    });
-    setToken(token);
+    // const token = await fetchToken();
+    setToken(await fetchToken());
   };
 
   return (
