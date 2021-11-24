@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import SideMenu from "../../components/SideMenu/SideMenu";
+import { fetchUsersList, selector } from "../../redux/slices/UsersSlice";
 import { getUsers } from "../../utils/getData";
 
 export default function Users() {
-  const [users, setUsers] = useState([]);
+  const dispatch = useDispatch();
 
-  const populateUsers = async () => {
-    setUsers(await getUsers());
-  };
+  const { usersList, loading } = useSelector(selector);
 
   useEffect(() => {
-    populateUsers();
+    dispatch(fetchUsersList());
   }, []);
 
   function renderTableUsers() {
-    return users.map((item, index) => {
+    return usersList.map((item, index) => {
       const { id, user_name, job_desk, schedule, phone, status } = item;
       return (
         <tr key={id}>
@@ -27,6 +27,9 @@ export default function Users() {
         </tr>
       );
     });
+  }
+  if (loading) {
+    return <p>Loading...</p>;
   }
   return (
     <div>

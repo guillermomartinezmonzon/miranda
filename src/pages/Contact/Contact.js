@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SideMenu from "../../components/SideMenu/SideMenu";
-import { selector, fetchContactList } from "../../redux/ContactSlice";
+import { selector, fetchContactList } from "../../redux/slices/ContactSlice";
 
 export default function Contact() {
   const dispatch = useDispatch();
@@ -9,7 +9,6 @@ export default function Contact() {
   const { contactList, loading } = useSelector(selector);
 
   useEffect(() => {
-    console.log(dispatch);
     dispatch(fetchContactList());
   }, []);
 

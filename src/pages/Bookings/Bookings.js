@@ -1,24 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import SideMenu from "../../components/SideMenu/SideMenu";
-import { getBookings } from "../../utils/getData";
+import { fetchBookingsList, selector } from "../../redux/slices/BookingsSlice";
 
 export default function Bookings() {
-  const [bookings, setBookings] = useState([]);
+  const dispatch = useDispatch();
 
-  const populateBookings = async () => {
-    const bookings1 = await getBookings();
-    setBookings(bookings1);
-  };
+  const { bookingsList, loading } = useSelector(selector);
 
   useEffect(() => {
-    populateBookings();
+    dispatch(fetchBookingsList());
   }, []);
 
   function renderTableData() {
-    if (!bookings) {
+    if (loading) {
       return <p>Loading...</p>;
     }
-    return bookings.map((item, index) => {
+    return bookingsList.map((item, index) => {
       const {
         id,
         guest_name,
@@ -58,22 +56,3 @@ export default function Bookings() {
     </>
   );
 }
-
-// const getData = () => {
-//   fetch("data/bookings.json", {
-//     headers: {
-//       "Content-Type": "application/json",
-//       Accept: "application/json",
-//     },
-//   })
-//     .then((res) => {
-//       console.log("res:");
-//       console.log(res);
-//       return res.json();
-//     })
-//     .then((json) => {
-//       console.log("json:");
-//       console.log(json);
-//       setData(json);
-//     });
-// };

@@ -9,7 +9,6 @@ export default function Rooms() {
     <div className="Rooms">
       <h1>Rooms</h1>
       <SideMenu />
-
       <DndProvider backend={HTML5Backend}>
         <CardRoomContainer />
       </DndProvider>
