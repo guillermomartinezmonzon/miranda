@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import CardBooking from "../../components/Cards/CardBooking";
+import ModalBooking from "../../components/ModalBooking";
 import SideMenu from "../../components/SideMenu/SideMenu";
+import TopMenu from "../../components/TopMenu/TopMenu";
 import { fetchBookingsList, selector } from "../../redux/slices/BookingsSlice";
+import { Container } from "../../styles/Container.styled";
+import { PanelContainerStyled } from "../../styles/PanelContainer.styled";
 
 export default function Bookings() {
   const dispatch = useDispatch();
@@ -13,46 +18,32 @@ export default function Bookings() {
   }, []);
 
   function renderTableData() {
-    if (loading) {
-      return <p>Loading...</p>;
-    }
     return bookingsList.map((item, index) => {
-      const {
-        id,
-        guest_name,
-        order_date,
-        check_in,
-        check_out,
-        notes,
-        room_type,
-        status,
-      } = item;
-      return (
-        <tr key={id}>
-          <td>{id}</td>
-          <td>{guest_name}</td>
-          <td>{order_date}</td>
-          <td>{check_in}</td>
-          <td>{check_out}</td>
-          <td>{notes}</td>
-          <td>{room_type}</td>
-          <td>{status}</td>
-        </tr>
-      );
+      return <CardBooking key={item.id} item={item} />;
     });
   }
 
-  return (
-    <>
-      <div className="bookings-container">
-        <h1>Bookings</h1>
+  if (loading) {
+    return (
+      <Container>
+        <ModalBooking />
         <SideMenu />
-        <div className="bookings-container__list">
-          <table id="bookings-table">
-            <tbody>{renderTableData()}</tbody>
-          </table>
-        </div>
-      </div>
-    </>
+        <PanelContainerStyled>
+          <TopMenu />
+          <h2>Loading...</h2>
+        </PanelContainerStyled>
+      </Container>
+    );
+  }
+
+  return (
+    <Container>
+      <ModalBooking />
+      <SideMenu />
+      <PanelContainerStyled>
+        <TopMenu />
+        {renderTableData()}
+      </PanelContainerStyled>
+    </Container>
   );
 }

@@ -22,7 +22,7 @@ export default function useToken() {
   };
 }
 
-export function fetchToken() {
+export async function fetchToken(credentials) {
   return fetch("data/token.json", {
     headers: {
       "Content-Type": "application/json",

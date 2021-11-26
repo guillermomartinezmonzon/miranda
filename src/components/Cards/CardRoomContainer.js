@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchRoomsList,
@@ -9,7 +9,7 @@ import {
 import { CardRoom } from "./CardRoom";
 import update from "immutability-helper";
 const style = {
-  width: 400,
+  width: "90%",
 };
 export const CardRoomContainer = () => {
   const dispatch = useDispatch();
@@ -20,19 +20,22 @@ export const CardRoomContainer = () => {
     dispatch(fetchRoomsList());
   }, []);
 
+  const [roomsOrder, setRoomsOrder] = useState(roomsList);
+
   const moveCard = useCallback(
     (dragIndex, hoverIndex) => {
-      const dragCard = roomsList[dragIndex];
-      setRooms(
-        update(roomsList, {
+      const dragCard = roomsOrder[dragIndex];
+      setRoomsOrder(
+        update(roomsOrder, {
           $splice: [
             [dragIndex, 1],
             [hoverIndex, 0, dragCard],
           ],
         })
       );
+      dispatch(setRooms(roomsOrder));
     },
-    [roomsList]
+    [roomsOrder]
   );
   const renderCard = (room, index) => {
     const {
@@ -45,7 +48,6 @@ export const CardRoomContainer = () => {
       status,
       image,
     } = room;
-    console.log(room_name);
     return (
       <CardRoom
         index={index}
@@ -68,7 +70,9 @@ export const CardRoomContainer = () => {
   }
   return (
     <>
-      <div style={style}>{roomsList.map((room, i) => renderCard(room, i))}</div>
+      <div style={style}>
+        {roomsOrder.map((room, i) => renderCard(room, i))}
+      </div>
     </>
   );
 };

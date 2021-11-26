@@ -6,10 +6,13 @@ import Bookings from "./pages/Bookings/Bookings";
 import Booking from "./pages/Bookings/Booking";
 import Contact from "./pages/Contact/Contact";
 import Rooms from "./pages/Rooms/Rooms";
-
 import PrivateRoute from "./components/PrivateRoute";
 import Login from "./pages/Login/Login";
 import useToken from "./utils/useToken";
+import { Container } from "./styles/Container.styled";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./styles/Theme.styled";
+import SideMenu from "./components/SideMenu/SideMenu";
 
 export default function App() {
   const { token, setToken } = useToken();
@@ -19,9 +22,10 @@ export default function App() {
   }
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
+          {/* /bookings */}
           <Route
             path="bookings"
             element={
@@ -30,15 +34,27 @@ export default function App() {
               </PrivateRoute>
             }
           >
+            {/* /bookings/:bookingId */}
             <Route
-              path=":guestId"
+              path=":bookingId"
               element={
                 <PrivateRoute>
                   <Booking />
                 </PrivateRoute>
               }
-            />
+            >
+              {/* /bookings/:bookingId/create */}
+              <Route
+                path="create"
+                element={
+                  <PrivateRoute>
+                    <Booking />
+                  </PrivateRoute>
+                }
+              />
+            </Route>
           </Route>
+          {/* /contact */}
           <Route
             path="contact"
             element={
@@ -47,6 +63,7 @@ export default function App() {
               </PrivateRoute>
             }
           />
+          {/* /rooms */}
           <Route
             path="rooms"
             element={
@@ -54,7 +71,28 @@ export default function App() {
                 <Rooms />
               </PrivateRoute>
             }
-          />
+          >
+            {/* /rooms/:roomId */}
+            <Route
+              path=":roomId"
+              element={
+                <PrivateRoute>
+                  <Rooms />
+                </PrivateRoute>
+              }
+            >
+              {/* /rooms/:roomId/edit */}
+              <Route
+                path="edit"
+                element={
+                  <PrivateRoute>
+                    <Rooms />
+                  </PrivateRoute>
+                }
+              />
+            </Route>
+          </Route>
+          {/* /users */}
           <Route
             path="users"
             element={
@@ -62,15 +100,28 @@ export default function App() {
                 <Users />
               </PrivateRoute>
             }
-          />
-          <Route
-            path="dashboard"
-            element={
-              <PrivateRoute>
-                <Dashboard />
-              </PrivateRoute>
-            }
-          />
+          >
+            {/* /users/:userId */}
+            <Route
+              path=":userId"
+              element={
+                <PrivateRoute>
+                  <Users />
+                </PrivateRoute>
+              }
+            >
+              {/* /users/:userId/edit */}
+              <Route
+                path="edit"
+                element={
+                  <PrivateRoute>
+                    <Users />
+                  </PrivateRoute>
+                }
+              />
+            </Route>
+          </Route>
+          {/* / */}
           <Route
             path="/"
             element={
@@ -81,6 +132,6 @@ export default function App() {
           />
         </Routes>
       </BrowserRouter>
-    </>
+    </ThemeProvider>
   );
 }

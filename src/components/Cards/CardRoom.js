@@ -1,11 +1,13 @@
 import { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
+import { CardStyled } from "../../styles/Card.styled";
+import { ItemCardStyled } from "../../styles/ItemCard.styled";
 import { ItemTypes } from "./ItemTypes";
 
 const style = {
   display: "flex",
   justifyContent: "space-around",
-  width: "800px",
+  width: "100%",
   border: "1px dashed gray",
   padding: "0.5rem 1rem",
   marginBottom: ".5rem",
@@ -89,14 +91,16 @@ export const CardRoom = ({
   const opacity = isDragging ? 0 : 1;
   drag(drop(ref));
   return (
-    <div ref={ref} style={{ ...style, opacity }} data-handler-id={handlerId}>
-      <img style={styleImg} src={image} alt="" />
-      <span>{room_name}</span>
-      <span>{bed_type}</span>
-      <span>{room_floor}</span>
-      <span>{facilities}</span>
-      <span>{rate}</span>
-      <span>{status}</span>
-    </div>
+    <CardStyled ref={ref} data-handler-id={handlerId}>
+      <ItemCardStyled>
+        <img style={styleImg} src={image} alt="" />
+      </ItemCardStyled>
+      <ItemCardStyled>{room_name}</ItemCardStyled>
+      <ItemCardStyled>{bed_type}</ItemCardStyled>
+      <ItemCardStyled>{room_floor}</ItemCardStyled>
+      <ItemCardStyled>{facilities}</ItemCardStyled>
+      <ItemCardStyled>{rate}</ItemCardStyled>
+      <ItemCardStyled>{status}</ItemCardStyled>
+    </CardStyled>
   );
 };

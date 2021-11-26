@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import CardContact from "../../components/Cards/CardContact";
+import CardUser from "../../components/Cards/CardUser";
 import SideMenu from "../../components/SideMenu/SideMenu";
+import TopMenu from "../../components/TopMenu/TopMenu";
 import { selector, fetchContactList } from "../../redux/slices/ContactSlice";
+import { Container } from "../../styles/Container.styled";
+import { PanelContainerStyled } from "../../styles/PanelContainer.styled";
 
 export default function Contact() {
   const dispatch = useDispatch();
@@ -14,31 +19,20 @@ export default function Contact() {
 
   function renderTableContact() {
     return contactList.map((item, index) => {
-      const { id, date, customer, comment, status } = item;
-      return (
-        <tr key={id}>
-          <td>{id}</td>
-          <td>{date}</td>
-          <td>{customer}</td>
-          <td>{comment}</td>
-          <td>{status}</td>
-        </tr>
-      );
+      return <CardContact key={item.id} item={item} />;
     });
   }
   if (loading) {
     return <p>Loading...</p>;
   } else {
     return (
-      <div>
-        <h1>Contact</h1>
+      <Container>
         <SideMenu />
-        <div className="bookings-container__list">
-          <table id="bookings-table">
-            <tbody>{renderTableContact()}</tbody>
-          </table>
-        </div>
-      </div>
+        <PanelContainerStyled>
+          <TopMenu />
+          {renderTableContact()}
+        </PanelContainerStyled>
+      </Container>
     );
   }
 }

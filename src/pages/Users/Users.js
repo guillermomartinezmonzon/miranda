@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import CardUser from "../../components/Cards/CardUser";
 import SideMenu from "../../components/SideMenu/SideMenu";
+import TopMenu from "../../components/TopMenu/TopMenu";
 import { fetchUsersList, selector } from "../../redux/slices/UsersSlice";
-import { getUsers } from "../../utils/getData";
+import { Container } from "../../styles/Container.styled";
+import { PanelContainerStyled } from "../../styles/PanelContainer.styled";
 
 export default function Users() {
   const dispatch = useDispatch();
@@ -14,32 +17,21 @@ export default function Users() {
   }, []);
 
   function renderTableUsers() {
-    return usersList.map((item, index) => {
-      const { id, user_name, job_desk, schedule, phone, status } = item;
-      return (
-        <tr key={id}>
-          <td>{id}</td>
-          <td>{user_name}</td>
-          <td>{job_desk}</td>
-          <td>{schedule}</td>
-          <td>{phone}</td>
-          <td>{status}</td>
-        </tr>
-      );
+    return usersList.map((user, index) => {
+      // const { id, user_name, job_desk, schedule, phone, status } = user;
+      return <CardUser key={user.id} user={user} />;
     });
   }
   if (loading) {
     return <p>Loading...</p>;
   }
   return (
-    <div>
-      <h1>Users</h1>
+    <Container>
       <SideMenu />
-      <div className="bookings-container__list">
-        <table id="bookings-table">
-          <tbody>{renderTableUsers()}</tbody>
-        </table>
-      </div>
-    </div>
+      <PanelContainerStyled>
+        <TopMenu />
+        {renderTableUsers()}
+      </PanelContainerStyled>
+    </Container>
   );
 }

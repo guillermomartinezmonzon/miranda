@@ -1,13 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SideMenu from "../../components/SideMenu/SideMenu";
+import TopMenu from "../../components/TopMenu/TopMenu";
+import { Container } from "../../styles/Container.styled";
+import { PanelContainerStyled } from "../../styles/PanelContainer.styled";
 
 export default function Booking() {
   return (
-    <div>
-      <h1>Booking</h1>
+    <Container>
       <SideMenu />
-      <Link to="/">return</Link>
-    </div>
+      <PanelContainerStyled>
+        <TopMenu />
+        <Link to="/">return</Link>
+      </PanelContainerStyled>
+    </Container>
   );
 }

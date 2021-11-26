@@ -1,22 +1,37 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useLocation } from "react-router";
+import { LinkStyled } from "../../styles/Link.styled";
+import { StyledSideMenu } from "../../styles/SideMenu.styled";
+import CardUserLogged from "../Cards/CardUserLogged";
 
 export default function SideMenu() {
+  let path = useLocation().pathname;
+
   return (
-    <nav>
-      <Link to="/users">Users</Link>
+    <StyledSideMenu>
+      <div>
+        <img src="./logo.png" alt="logo" width="80%" />
+      </div>
+      <LinkStyled path={path === "/users" ? true : false} to="/users">
+        Users
+      </LinkStyled>
       <br />
+      <LinkStyled path={path.length < 2 ? true : false} to="/">
+        Dashboard
+      </LinkStyled>
       <br />
-      <Link to="/">Dashboard</Link>
+      <LinkStyled path={path === "/bookings" ? true : false} to="/bookings">
+        Bookings
+      </LinkStyled>
       <br />
+      <LinkStyled path={path === "/contact" ? true : false} to="/contact">
+        Contact
+      </LinkStyled>
       <br />
-      <Link to="/bookings">Bookings</Link>
-      <br />
-      <br />
-      <Link to="/contact">Contact</Link>
-      <br />
-      <br />
-      <Link to="/rooms">Rooms</Link>
-    </nav>
+      <LinkStyled path={path === "/rooms" ? true : false} to="/rooms">
+        Rooms
+      </LinkStyled>
+      <CardUserLogged />
+    </StyledSideMenu>
   );
 }
