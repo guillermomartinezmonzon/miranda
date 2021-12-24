@@ -9,8 +9,7 @@ export default function App() {
     <Container>
       <SideMenu />
       <PanelContainerStyled>
-        <TopMenu />
-        <h1>Dashboard</h1>
+        <TopMenu title="dashboard" />
       </PanelContainerStyled>
     </Container>
   );

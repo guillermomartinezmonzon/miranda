@@ -1,6 +1,5 @@
-import React from "react";
-import { CardStyled } from "../../styles/Card.styled";
-import { ItemCardStyled } from "../../styles/ItemCard.styled";
+import { CardStyled } from "../../../styles/Card.styled";
+import { ItemCardStyled } from "../../../styles/ItemCard.styled";
 
 export default function CardContact(item) {
   return (

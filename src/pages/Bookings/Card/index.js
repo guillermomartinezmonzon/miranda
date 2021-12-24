@@ -1,7 +1,6 @@
-import React from "react";
 import { Navigate } from "react-router";
-import { CardStyled } from "../../styles/Card.styled";
-import { ItemCardStyled } from "../../styles/ItemCard.styled";
+import { CardStyled } from "./Card.styled";
+import { ItemCardStyled } from "../../../styles/ItemCard.styled";
 
 export default function CardBooking(item) {
   function handleNotes(notes) {

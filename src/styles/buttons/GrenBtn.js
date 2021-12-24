@@ -10,4 +10,5 @@ export const GreenBtn = styled.nav`
   color: green;
   height: 30px;
   width: 70px;
+  cursor: pointer;
 `;

@@ -1,8 +1,7 @@
-import React from "react";
 import { useLocation } from "react-router";
-import { LinkStyled } from "../../styles/Link.styled";
-import { StyledSideMenu } from "../../styles/SideMenu.styled";
-import CardUserLogged from "../Cards/CardUserLogged";
+import { LinkStyled } from "./Link.styled";
+import { StyledSideMenu } from "./SideMenu.styled";
+import UserLogged from "./UserLogged/UserLogged";
 
 export default function SideMenu() {
   let path = useLocation().pathname;
@@ -31,7 +30,7 @@ export default function SideMenu() {
       <LinkStyled path={path === "/rooms" ? true : false} to="/rooms">
         Rooms
       </LinkStyled>
-      <CardUserLogged />
+      <UserLogged />
     </StyledSideMenu>
   );
 }

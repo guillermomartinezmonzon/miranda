@@ -1,13 +1,13 @@
-import React, { useEffect, useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchRoomsList,
   selector,
   setRooms,
 } from "../../redux/slices/RoomsSlice";
-
-import { CardRoom } from "./CardRoom";
 import update from "immutability-helper";
+import { useCallback, useEffect, useState } from "react";
+import { CardRoom } from "./CardRoom";
+
 const style = {
   width: "90%",
 };

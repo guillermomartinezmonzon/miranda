@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CardBooking from "../../components/Cards/CardBooking";
+import CardBooking from "./Card";
 import ModalBooking from "../../components/ModalBooking";
 import SideMenu from "../../components/SideMenu/SideMenu";
 import TopMenu from "../../components/TopMenu/TopMenu";
 import { fetchBookingsList, selector } from "../../redux/slices/BookingsSlice";
 import { Container } from "../../styles/Container.styled";
 import { PanelContainerStyled } from "../../styles/PanelContainer.styled";
+import { useEffect } from "react";
 
 export default function Bookings() {
   const dispatch = useDispatch();

@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CardUser from "../../components/Cards/CardUser";
+import CardUser from "./Card";
 import SideMenu from "../../components/SideMenu/SideMenu";
 import TopMenu from "../../components/TopMenu/TopMenu";
 import { fetchUsersList, selector } from "../../redux/slices/UsersSlice";
 import { Container } from "../../styles/Container.styled";
 import { PanelContainerStyled } from "../../styles/PanelContainer.styled";
+import { useEffect } from "react";
 
 export default function Users() {
   const dispatch = useDispatch();

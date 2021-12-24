@@ -1,4 +1,3 @@
-import React from "react";
 import { ModalBookingStyled } from "../styles/ModalBooking.styled";
 
 export default function ModalBooking() {

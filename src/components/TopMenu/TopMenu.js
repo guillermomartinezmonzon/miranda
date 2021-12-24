@@ -1,10 +1,12 @@
-import React from "react";
+import { useLocation } from "react-router";
 import { IconTopMenuStyled } from "../../styles/IconTopMenu.styled";
-import { TopMenuStyled } from "../../styles/TopMenu.styled";
+import { TitleTopMenuStyled, TopMenuStyled } from "./TopMenu.styled";
 
 export default function TopMenu() {
+  let path = useLocation().pathname;
   return (
     <TopMenuStyled>
+      <TitleTopMenuStyled>{path}</TitleTopMenuStyled>
       <IconTopMenuStyled>
         <i className="fas fa-search"></i>
       </IconTopMenuStyled>

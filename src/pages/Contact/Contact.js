@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CardContact from "../../components/Cards/CardContact";
-import CardUser from "../../components/Cards/CardUser";
+import { useEffect } from "react";
+import CardContact from "./Card";
 import SideMenu from "../../components/SideMenu/SideMenu";
 import TopMenu from "../../components/TopMenu/TopMenu";
 import { selector, fetchContactList } from "../../redux/slices/ContactSlice";

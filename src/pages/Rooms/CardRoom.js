@@ -2,7 +2,6 @@ import { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { CardStyled } from "../../styles/Card.styled";
 import { ItemCardStyled } from "../../styles/ItemCard.styled";
-import { ItemTypes } from "./ItemTypes";
 
 const style = {
   display: "flex",
@@ -34,7 +33,7 @@ export const CardRoom = ({
 }) => {
   const ref = useRef(null);
   const [{ handlerId }, drop] = useDrop({
-    accept: ItemTypes.CARD,
+    accept: "CARD",
     collect(monitor) {
       return {
         handlerId: monitor.getHandlerId(),
@@ -80,7 +79,7 @@ export const CardRoom = ({
     },
   });
   const [{ isDragging }, drag] = useDrag({
-    type: ItemTypes.CARD,
+    type: "CARD",
     item: () => {
       return { id, index };
     },
