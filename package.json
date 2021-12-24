@@ -2,7 +2,7 @@
   "name": "miranda-admin",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://guillermomartinezmonzon.github.io/miranda",
+  "homepage": "https://guillermomartinezmonzon.github.io/miranda",
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
     "@testing-library/jest-dom": "^5.15.0",
