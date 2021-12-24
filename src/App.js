@@ -18,7 +18,7 @@ export default function App() {
   return (
     <AuthProvider>
       <ThemeProvider theme={theme}>
-        <BrowserRouter basename={process.env.ROOT_URL}>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Routes>
             <Route
               path="bookings"
