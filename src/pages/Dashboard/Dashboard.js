@@ -1,4 +1,4 @@
-import React from "react";
+import SimpleMap from "../../components/map/map";
 import SideMenu from "../../components/SideMenu/SideMenu";
 import TopMenu from "../../components/TopMenu/TopMenu";
 import { Container } from "../../styles/Container.styled";
@@ -9,7 +9,8 @@ export default function App() {
     <Container>
       <SideMenu />
       <PanelContainerStyled>
-        <TopMenu title="dashboard" />
+        <TopMenu />
+        <SimpleMap/>
       </PanelContainerStyled>
     </Container>
   );

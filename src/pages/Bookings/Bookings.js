@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import CardBooking from "./Card";
-import ModalBooking from "../../components/ModalBooking";
+import ModalBooking from "./Card/ModalBooking";
 import SideMenu from "../../components/SideMenu/SideMenu";
 import TopMenu from "../../components/TopMenu/TopMenu";
 import { fetchBookingsList, selector } from "../../redux/slices/BookingsSlice";

@@ -7,6 +7,33 @@ export const ItemCardStyled = styled.div`
   max-width: 90%;
   margin-inline: 0.7rem;
 
+  #view_notes_btn {
+    border: none;
+    text-size: 12px;
+    border-radius: 20%;
+    padding: 0.4rem;
+    background: #e8ffee;
+    color: gray;
+    :hover {
+      cursor: pointer;
+    }
+  }
+
+  #publish {
+    margin-right: 5px;
+    color: green;
+  }
+
+  #archive {
+    margin-left: 5px;
+    color: red;
+  }
+
+  #booking-more {
+    border: none;
+    background: none;
+  }
+
   ${({ status }) =>
     status === "Refund" &&
     `

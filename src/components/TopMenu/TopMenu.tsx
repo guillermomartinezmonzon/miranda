@@ -1,18 +1,21 @@
 import { useLocation } from "react-router";
-import { IconTopMenuStyled } from "../../styles/IconTopMenu.styled";
-import { TitleTopMenuStyled, TopMenuStyled } from "./TopMenu.styled";
+import { IconTopMenuStyled, TitleTopMenuStyled, TopMenuStyled } from "./TopMenu.styled";
 
 export default function TopMenu() {
   let path = useLocation().pathname;
+
   return (
     <TopMenuStyled>
-      <TitleTopMenuStyled>{path}</TitleTopMenuStyled>
+        <TitleTopMenuStyled>{path}</TitleTopMenuStyled>
+        <p></p>
+        <p></p>
+        <p></p>
       <IconTopMenuStyled>
         <i className="fas fa-search"></i>
       </IconTopMenuStyled>
-      <IconTopMenuStyled>
-        <i className="far fa-heart"></i>
-      </IconTopMenuStyled>
+        <p></p>
+        <p></p>
+        <p></p>
       <IconTopMenuStyled>
         <i className="far fa-envelope"></i>
       </IconTopMenuStyled>
@@ -26,7 +29,7 @@ export default function TopMenu() {
         <img
           width="30"
           height="30"
-          src="https://cdn-icons.flaticon.com/png/512/3006/premium/3006872.png?token=exp=1637852599~hmac=73a2762f5282b8bb5d9748c1521a83b7"
+          src="https://cdn.schoolstickers.com/products/en/819/10MM_SMILE-03.png"
           alt=""
         />
       </IconTopMenuStyled>

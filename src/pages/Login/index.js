@@ -17,7 +17,7 @@ function Login() {
     try {
       let response = await loginUser(dispatch, { email, password, name });
       if (!response.auth_token) return;
-      navigate("/dashboard");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }

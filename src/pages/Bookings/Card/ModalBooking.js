@@ -1,4 +1,4 @@
-import { ModalBookingStyled } from "../styles/ModalBooking.styled";
+import { ModalBookingStyled } from "./ModalBooking.styled";
 
 export default function ModalBooking() {
   return (

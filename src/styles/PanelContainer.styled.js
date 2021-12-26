@@ -7,5 +7,5 @@ export const PanelContainerStyled = styled.div`
   flex-direction: column;
   max-width: 90%;
   padding: 0 10px;
-  margin: 0 auto;
+  margin-left: 245px;
 `;

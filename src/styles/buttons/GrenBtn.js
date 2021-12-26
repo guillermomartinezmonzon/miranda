@@ -8,7 +8,7 @@ export const GreenBtn = styled.nav`
   background-color: #e8ffee;
   padding: 10px;
   color: green;
-  height: 30px;
+  height: 25px;
   width: 70px;
   cursor: pointer;
 `;

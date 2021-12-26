@@ -21,6 +21,14 @@ export default function App() {
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Routes>
             <Route
+              path="/" 
+              element={
+                <PrivateRoute>
+                  <Dashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
               path="bookings"
               element={
                 <PrivateRoute>
@@ -106,23 +114,15 @@ export default function App() {
                 />
               </Route>
             </Route>
-            <Route
-              path="/"
-              element={
-                <PrivateRoute>
-                  <Dashboard />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/dashboard"
-              element={
-                <PrivateRoute>
-                  <Dashboard />
-                </PrivateRoute>
-              }
-            />
-            <Route path="/login" element={<Login />} />
+            {/* <Route */}
+            {/*   path="dashboard" */}
+            {/*   element={ */}
+            {/*     <PrivateRoute> */}
+            {/*       <Dashboard /> */}
+            {/*     </PrivateRoute> */}
+            {/*   } */}
+            {/* /> */}
+            <Route path="login" element={<Login />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

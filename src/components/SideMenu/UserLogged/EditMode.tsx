@@ -31,19 +31,23 @@ export const EditMode = () => {
   };
 
   return (
-        <form>
+        <div>
             <label>Nombre</label>
+            <p></p>
             <input 
                 value={inputName}
                 onChange={(e) => setInputName(e.target.value)}
             />
+            <p></p>
             <label>Email</label>
+            <p></p>
             <input
                 value={inputEmail}
                 onChange={(e) => setInputEmail(e.target.value)}
             />
+            <p></p>
             <GreenBtn onClick={handleEdit}>Guardar</GreenBtn>
-        </form>
+        </div>
   );
 
 }

@@ -1,5 +1,5 @@
 import { Navigate } from "react-router";
-import { CardStyled } from "./Card.styled";
+import { CardStyled } from "../../../styles/Card.styled";
 import { ItemCardStyled } from "../../../styles/ItemCard.styled";
 
 export default function CardBooking(item) {
@@ -20,7 +20,7 @@ export default function CardBooking(item) {
         <img
           width="30"
           height="30"
-          src="https://cdn-icons.flaticon.com/png/512/3006/premium/3006872.png?token=exp=1637852599~hmac=73a2762f5282b8bb5d9748c1521a83b7"
+          src="https://cdn.schoolstickers.com/products/en/819/10MM_SMILE-03.png"
           alt=""
         />
       </ItemCardStyled>
@@ -38,8 +38,8 @@ export default function CardBooking(item) {
         {item.item.status}
       </ItemCardStyled>
       <ItemCardStyled>
-        <button id="booking-more" onclick={handleMore}>
-          <i class="fas fa-ellipsis-v"></i>
+        <button id="booking-more" onClick={handleMore}>
+          <i className="fas fa-ellipsis-v"></i>
         </button>
       </ItemCardStyled>
     </CardStyled>
