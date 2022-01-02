@@ -5,7 +5,7 @@ import SideMenu from "../../components/SideMenu/SideMenu";
 import TopMenu from "../../components/TopMenu/TopMenu";
 import { selector, fetchContactList } from "../../redux/slices/ContactSlice";
 import { Container } from "../../styles/Container.styled";
-import { PanelContainerStyled } from "../../styles/PanelContainer.styled";
+import { InContainerStyled, PanelContainerStyled } from "../../styles/PanelContainer.styled";
 
 export default function Contact() {
   const dispatch = useDispatch();
@@ -28,8 +28,10 @@ export default function Contact() {
       <Container>
         <SideMenu />
         <PanelContainerStyled>
-          <TopMenu />
-          {renderTableContact()}
+          <TopMenu title={"Contact"}/>
+          <InContainerStyled>  
+              {renderTableContact()}
+          </InContainerStyled>    
         </PanelContainerStyled>
       </Container>
     );

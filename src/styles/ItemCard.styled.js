@@ -34,11 +34,16 @@ export const ItemCardStyled = styled.div`
     background: none;
   }
 
+  .status {
+
+  }
+
   ${({ status }) =>
     status === "Refund" &&
     `
+    align-items: center;
     text-size: 12px;
-    border-radius: 20%;
+    border-radius: 20px;
     width: 130px;
     height: 30px;
   background: #FFEDEC;
@@ -48,8 +53,9 @@ export const ItemCardStyled = styled.div`
   ${({ status }) =>
     status === "Booked" &&
     `
+    align-items: center;
     text-size: 12px;
-    border-radius: 20%;
+    border-radius: 20px;
     width: 130px;
     height: 30px;
 background: #E8FFEE;
@@ -59,8 +65,9 @@ color: green;
 ${({ status }) =>
     status === "Pending" &&
     `
+    align-items: center;
     text-size: 12px;
-    border-radius: 20%;
+    border-radius: 20px;
     width: 130px;
     height: 30px;
 background: #E2E2E2;
@@ -70,8 +77,9 @@ color: #707070;
 ${({ status }) =>
     status === "Canceled" &&
     `
+    align-items: center;
     text-size: 12px;
-    border-radius: 20%;
+    border-radius: 20px;
     width: 130px;
     height: 30px;
 background: #707070;

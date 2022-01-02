@@ -1,30 +1,53 @@
 import styled from "styled-components";
 
-export const TopMenuStyled = styled.nav`
-  position: relative;
-  height: 120px;
+export const TitleTopMenuStyled = ({children}) => {
+    return (
+        <TitleTopMenu>
+            {children}
+        </TitleTopMenu>
+    )
+}
+
+export const TopMenuStyled = styled.div`
+  height: ${props => props.theme.sizes.heightTopMenu}px;
+  width: ${props => props.theme.sizes.widthIn}px;
   top: 0;
-  left: 240px;
-  z-index: -1;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  max-width: 90%;
-  background-color: white;
+  justify-items: space-around;
+  background-color: ${props => props.theme.colors.bg};
+  button {
+      background: none;
+      border: none;
+  }
 `;
 
-export const TitleTopMenuStyled = styled.div`
-  letter-spacing: 0;
-  line-height: 28px;
-  min-height: 41px;
-  white-space: nowrap;
+export const TitleTopMenu = styled.div`
+    display: flex;
+    position: fixed;
+    left: ${props => props.theme.sizes.sizeSideMenu};
+    font-size: 32px;
+    i {
+        margin: 15px;
+        cursor: pointer;
+    }
 `;
  
-export const IconTopMenuStyled = styled.nav`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  height: 70px;
-  width: 70px;
+export const IconsTopMenuStyled = styled.div`
+    width: ${props => props.theme.sizes.widthTopMenuIcons}px;
+    margin-left: ${props => props.theme.sizes.widthIn - props.theme.sizes.widthTopMenuIcons}px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+  i {
+      color: ${props => props.theme.colors.eden};
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 70px;
+      width: 70px;
+      &:hover{
+        cursor: pointer;
+      }
+  }
 `;

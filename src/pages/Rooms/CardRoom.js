@@ -3,17 +3,6 @@ import { useDrag, useDrop } from "react-dnd";
 import { CardStyled } from "../../styles/Card.styled";
 import { ItemCardStyled } from "../../styles/ItemCard.styled";
 
-const style = {
-  display: "flex",
-  justifyContent: "space-around",
-  width: "100%",
-  border: "1px dashed gray",
-  padding: "0.5rem 1rem",
-  marginBottom: ".5rem",
-  backgroundColor: "white",
-  cursor: "move",
-};
-
 const styleImg = {
   width: "30px",
   height: "30px",
@@ -87,7 +76,6 @@ export const CardRoom = ({
       isDragging: monitor.isDragging(),
     }),
   });
-  const opacity = isDragging ? 0 : 1;
   drag(drop(ref));
   return (
     <CardStyled ref={ref} data-handler-id={handlerId}>

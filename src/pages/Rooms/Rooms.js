@@ -4,17 +4,19 @@ import { CardRoomContainer } from "./CardRoomContainer";
 import SideMenu from "../../components/SideMenu/SideMenu";
 import TopMenu from "../../components/TopMenu/TopMenu";
 import { Container } from "../../styles/Container.styled";
-import { PanelContainerStyled } from "../../styles/PanelContainer.styled";
+import { InContainerStyled, PanelContainerStyled } from "../../styles/PanelContainer.styled";
 
 export default function Rooms() {
   return (
     <Container>
       <SideMenu />
       <PanelContainerStyled>
-        <TopMenu />
-        <DndProvider backend={HTML5Backend}>
-          <CardRoomContainer />
-        </DndProvider>
+        <TopMenu title={"Rooms"}/>
+        <InContainerStyled>  
+            <DndProvider backend={HTML5Backend}>
+                <CardRoomContainer />
+            </DndProvider>
+        </InContainerStyled>    
       </PanelContainerStyled>
     </Container>
   );

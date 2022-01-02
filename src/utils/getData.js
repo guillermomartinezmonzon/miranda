@@ -1,3 +1,14 @@
+export async function getLocations() {
+  return await fetch("data/locations.json", {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .catch((e) => console.log(e));
+}
+
 export function getBookings() {
   return fetch("data/bookings.json", {
     headers: {
@@ -41,3 +52,4 @@ export function getUsers() {
     .then((res) => res.json())
     .catch((e) => console.log(e));
 }
+

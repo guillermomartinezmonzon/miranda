@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 
 import { loginUser, useAuthDispatch } from "../../context";
+import {GreenBtn} from "../../styles/buttons/GrenBtn";
+import {LoginStyled} from "./Login.styled";
 
 function Login() {
   console.log("Login");
@@ -24,43 +26,43 @@ function Login() {
   };
 
   return (
-    <div>
-      <div>
-        <h1>Login Page</h1>
+      <LoginStyled>
+        <h1>Login</h1>
         <form onSubmit={handleLogin}>
-          <div>
-            <div>
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-            <div>
-              <label htmlFor="email">Email</label>
-              <input
-                type="text"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div>
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-          </div>
-          <button>login</button>
+            <table>
+                <tbody>
+                    {/* <tr><label htmlFor="name">Name</label></tr> */}
+                    {/* <tr> */}    
+                    {/*   <input */}
+                    {/*     type="text" */}
+                    {/*     id="name" */}
+                    {/*     value={name} */}
+                    {/*     onChange={(e) => setName(e.target.value)} */}
+                    {/*   /> */}
+                    {/* </tr> */}
+                    <tr><label htmlFor="email">Email</label></tr>
+                    <tr>
+                      <input
+                        type="text"
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                    </tr>
+                    <tr><label htmlFor="password">Password</label></tr>
+                    <tr>
+                      <input
+                        type="password"
+                        id="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                    </tr>
+                    <tr><center><GreenBtn>login</GreenBtn></center></tr>
+                </tbody>
+            </table>    
         </form>
-      </div>
-    </div>
+     </LoginStyled>     
   );
 }
 

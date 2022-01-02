@@ -34,7 +34,7 @@ export default function CardBooking(item) {
         </button>
       </ItemCardStyled>
       <ItemCardStyled>{item.item.room_type}</ItemCardStyled>
-      <ItemCardStyled status={item.item.status}>
+      <ItemCardStyled id="status" status={item.item.status}>
         {item.item.status}
       </ItemCardStyled>
       <ItemCardStyled>

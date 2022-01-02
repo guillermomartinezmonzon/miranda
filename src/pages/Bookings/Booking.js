@@ -9,7 +9,7 @@ export default function Booking() {
     <Container>
       <SideMenu />
       <PanelContainerStyled>
-        <TopMenu />
+        <TopMenu title={"Booking"}/>
         <Link to="/">return</Link>
       </PanelContainerStyled>
     </Container>

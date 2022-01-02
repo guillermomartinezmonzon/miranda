@@ -1,46 +1,46 @@
-import { useLocation } from "react-router";
-import { IconTopMenuStyled, TitleTopMenuStyled, TopMenuStyled } from "./TopMenu.styled";
+import {  IconsTopMenuStyled, TitleTopMenuStyled, TopMenuStyled } from "./TopMenu.styled";
+import { logout, useAuthDispatch } from "../../context";
+import { Navigate } from "react-router";
+import {useState} from "react";
 
-export default function TopMenu() {
-  let path = useLocation().pathname;
+export default function TopMenu(props: any) {
+  const {title} = props;
+  const dispatch = useAuthDispatch();  
+
+  const [colapse, setColapse] = useState(false);
+
+  function logOut() {
+    logout(dispatch); //call the logout action
+    <Navigate to="/login" />; //navigate to login page on logout
+  };
+
+  function colapseMenu() {
+      setColapse(!colapse);
+      const menu =document.getElementById("sideMenu"); 
+      if (menu){ 
+         if (colapse) {
+              menu.style.display = "none";
+         } else {    
+              menu.style.display = "flex"; 
+         } 
+      }
+  };
 
   return (
     <TopMenuStyled>
-        <TitleTopMenuStyled>{path}</TitleTopMenuStyled>
-        <p></p>
-        <p></p>
-        <p></p>
-      <IconTopMenuStyled>
-        <i className="fas fa-search"></i>
-      </IconTopMenuStyled>
-        <p></p>
-        <p></p>
-        <p></p>
-      <IconTopMenuStyled>
-        <i className="far fa-envelope"></i>
-      </IconTopMenuStyled>
-      <IconTopMenuStyled>
-        <i className="far fa-bell"></i>
-      </IconTopMenuStyled>
-      <IconTopMenuStyled>
-        <i className="far fa-comment-alt"></i>
-      </IconTopMenuStyled>
-      <IconTopMenuStyled>
-        <img
-          width="30"
-          height="30"
-          src="https://cdn.schoolstickers.com/products/en/819/10MM_SMILE-03.png"
-          alt=""
-        />
-      </IconTopMenuStyled>
-      <IconTopMenuStyled>
-        <select name="lang" id="lang">
-          <option value="ESP">ES</option>
-          <option value="ENG" defaultChecked>
-            EN
-          </option>
-        </select>
-      </IconTopMenuStyled>
+      <TitleTopMenuStyled>
+          <button onClick={colapseMenu}>
+              <i className="fas fa-bars fa-lg"></i>
+          </button>
+          {title}
+      </TitleTopMenuStyled>
+      <IconsTopMenuStyled>
+          <i className="far fa-envelope fa-lg"></i>
+          <i className="far fa-bell fa-lg"></i>
+          <button onClick={logOut}>
+              <i className="fa fa-sign-out fa-lg"></i>
+          </button>
+      </IconsTopMenuStyled>    
     </TopMenuStyled>
   );
 }

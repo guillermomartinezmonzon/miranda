@@ -4,7 +4,7 @@ import SideMenu from "../../components/SideMenu/SideMenu";
 import TopMenu from "../../components/TopMenu/TopMenu";
 import { fetchUsersList, selector } from "../../redux/slices/UsersSlice";
 import { Container } from "../../styles/Container.styled";
-import { PanelContainerStyled } from "../../styles/PanelContainer.styled";
+import { InContainerStyled, PanelContainerStyled } from "../../styles/PanelContainer.styled";
 import { useEffect } from "react";
 
 export default function Users() {
@@ -29,8 +29,10 @@ export default function Users() {
     <Container>
       <SideMenu />
       <PanelContainerStyled>
-        <TopMenu />
-        {renderTableUsers()}
+        <TopMenu title={"Users"}/>
+        <InContainerStyled>  
+            {renderTableUsers()}
+        </InContainerStyled>
       </PanelContainerStyled>
     </Container>
   );

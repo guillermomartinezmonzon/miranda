@@ -5,7 +5,7 @@ import SideMenu from "../../components/SideMenu/SideMenu";
 import TopMenu from "../../components/TopMenu/TopMenu";
 import { fetchBookingsList, selector } from "../../redux/slices/BookingsSlice";
 import { Container } from "../../styles/Container.styled";
-import { PanelContainerStyled } from "../../styles/PanelContainer.styled";
+import { InContainerStyled, PanelContainerStyled } from "../../styles/PanelContainer.styled";
 import { useEffect } from "react";
 
 export default function Bookings() {
@@ -41,8 +41,10 @@ export default function Bookings() {
       <ModalBooking />
       <SideMenu />
       <PanelContainerStyled>
-        <TopMenu />
-        {renderTableData()}
+          <TopMenu title={"Bookings"}/>
+          <InContainerStyled>
+              {renderTableData()}
+          </InContainerStyled>
       </PanelContainerStyled>
     </Container>
   );

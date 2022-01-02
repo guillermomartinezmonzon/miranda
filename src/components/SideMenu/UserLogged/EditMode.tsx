@@ -1,6 +1,6 @@
 import {useContext, useState} from "react";
 import { useAuthDispatch, useAuthState } from "../../../context";
-import { GreenBtn } from "../../../styles/buttons/GrenBtn";
+import {RedButton} from "../../../styles/buttons/RedBtn";
 import {EditModeContext} from "./UserLogged";
 
 export const EditMode = () => {
@@ -46,7 +46,7 @@ export const EditMode = () => {
                 onChange={(e) => setInputEmail(e.target.value)}
             />
             <p></p>
-            <GreenBtn onClick={handleEdit}>Guardar</GreenBtn>
+            <RedButton onClick={handleEdit}>Guardar</RedButton>
         </div>
   );
 

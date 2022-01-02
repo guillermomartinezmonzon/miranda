@@ -7,4 +7,5 @@ export const Container = styled.div`
   flex-direction: row;
   width: 100%;
   padding: 0 10px;
+  font-family: ${props => props.theme.fonts.mainFont};
 `;

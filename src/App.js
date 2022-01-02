@@ -13,8 +13,6 @@ import { theme } from "./styles/Theme.styled";
 import { AuthProvider } from "./context";
 
 export default function App() {
-  console.log("App");
-
   return (
     <AuthProvider>
       <ThemeProvider theme={theme}>
@@ -114,14 +112,6 @@ export default function App() {
                 />
               </Route>
             </Route>
-            {/* <Route */}
-            {/*   path="dashboard" */}
-            {/*   element={ */}
-            {/*     <PrivateRoute> */}
-            {/*       <Dashboard /> */}
-            {/*     </PrivateRoute> */}
-            {/*   } */}
-            {/* /> */}
             <Route path="login" element={<Login />} />
           </Routes>
         </BrowserRouter>
