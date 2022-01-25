@@ -10,7 +10,7 @@ export const GreenBtn = styled.button`
   border: none;
   padding: 10px;
   color: green;
-  height: 25px;
-  width: 70px;
+  height: 47px;
+  width: 158px;
   cursor: pointer;
 `;

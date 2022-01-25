@@ -15,21 +15,17 @@ export default function SideMenu() {
                   <IconLinkStyled/>
                   Dashboard
               </LinkStyled>
-              <br />
-              <LinkStyled path={path.includes("users") ? 1 : 0} to="/users">
-                Users
-              </LinkStyled>
-              <br />
               <LinkStyled path={path.includes("bookings") ?  1 : 0} to="/bookings">
                 Bookings
               </LinkStyled>
-              <br />
+              <LinkStyled path={path.includes("rooms") ? 1 :  0} to="/rooms">
+                 Rooms
+              </LinkStyled>
               <LinkStyled path={path.includes("contact") ? 1 : 0} to="/contact">
                 Contact
               </LinkStyled>
-              <br />
-              <LinkStyled path={path.includes("rooms") ? 1 :  0} to="/rooms">
-                 Rooms
+              <LinkStyled path={path.includes("users") ? 1 : 0} to="/users">
+                Users
               </LinkStyled>
           </LinksContainer>
       <UserLogged />

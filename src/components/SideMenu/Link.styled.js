@@ -23,6 +23,7 @@ export const LinksContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 52px;
+  widht: ${props => props.theme.sizes.sizeSideMenu - (props.theme.sizes.sizeSideMenu/2)}
   padding-left: ${props => props.theme.sizes.sizeSideMenu/2}px;
   position: relative;
   width: ${props => props.theme.sizes.sizeSideMenu}px;
@@ -31,12 +32,13 @@ export const LinksContainer = styled.div`
 export const LinkStyled = styled(Link)(({ path, theme }) => ({
   color: path ? theme.colors.mainRed : theme.colors.mainGreen,
   textDecoration: "none",
-  marginLeft: "20px",
   display: "flex",
   alignItems: "center",
   textAlign: "left",
     fontSize: "22px",  
   fontWeight: "500",
+  margin: "20px",  
+    marginLeft: "100px",  
 }));
 
 

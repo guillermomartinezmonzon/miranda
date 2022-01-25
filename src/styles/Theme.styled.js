@@ -1,6 +1,6 @@
 export const theme = {
   colors: {
-    mainGreen: "#799283",
+    mainGreen: "#135846",
     mainRed: "#E23428",
     bg: "white",  
     mainOrange: "rgba(251, 159, 68, 1)",   
@@ -15,13 +15,13 @@ export const theme = {
   },
   sizes: {
     // All sizes in PX  
-    sizeSideMenu: 280,  
+    sizeSideMenu: 345,  
     heightTopMenu: 120,
-    widthIn: 1000,  
-    heightIn: 950,  
+    widthIn: 1575,  
+    heightIn: 1200,  
     InPadding: 20,
-    dashboardItemHeight: 380,
-    dashboardItemWidth: 900,
+    dashboardItemHeight: 510,
+    dashboardItemWidth: 718,
     dashboardItemMargin: 80,
     widthTopMenuIcons: 200,  
     cardHeight: 60,

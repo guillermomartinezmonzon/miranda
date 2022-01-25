@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/Theme.styled";
 import { AuthProvider } from "./context";
+import SignUp from "./pages/SignUp";
 
 export default function App() {
   return (
@@ -113,6 +114,7 @@ export default function App() {
               </Route>
             </Route>
             <Route path="login" element={<Login />} />
+            <Route path="signup" element={<SignUp />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

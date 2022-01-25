@@ -2,8 +2,10 @@ import SideMenu from "../../components/SideMenu/SideMenu";
 import TopMenu from "../../components/TopMenu/TopMenu";
 import { Container } from "../../styles/Container.styled";
 import { InContainerStyled, PanelContainerStyled } from "../../styles/PanelContainer.styled";
+import {BookingsDown} from "./BookingsDown";
+import Calendar from "./Calendar";
 import {ChartContainerStyled} from "./Chart/chart.styled";
-import {Map} from "./map/map.styled";
+import {Head} from "./head";
 
 export default function App() {
     const title="Dashboard";
@@ -12,10 +14,13 @@ export default function App() {
             <SideMenu />
             <PanelContainerStyled>
                 <TopMenu title={title}/>
-                <InContainerStyled>
-                    <Map/>
+                <Head/>
+                <InContainerStyled id="in-dashboard">
+                    {/* <Map/> */}
+                    <Calendar/>
                     <ChartContainerStyled/>
                 </InContainerStyled>    
+                <BookingsDown/>
           </PanelContainerStyled>
         </Container>
   );

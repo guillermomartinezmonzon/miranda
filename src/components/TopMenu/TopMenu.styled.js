@@ -10,8 +10,9 @@ export const TitleTopMenuStyled = ({children}) => {
 
 export const TopMenuStyled = styled.div`
   height: ${props => props.theme.sizes.heightTopMenu}px;
-  width: ${props => props.theme.sizes.widthIn}px;
+  position: fixed;
   top: 0;
+  left: ${p=>p.theme.sizes.sizeSideMenu}px;
   display: flex;
   align-items: center;
   justify-items: space-around;

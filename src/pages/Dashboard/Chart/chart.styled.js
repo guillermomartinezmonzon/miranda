@@ -8,7 +8,7 @@ export const ChartContainerStyled = () => {
     const theme = useTheme();
     const width = theme.sizes.dashboardItemWidth;
     const height = theme.sizes.dashboardItemHeight;
-    const margin = theme.sizes.dashboardItemMargin;
+    const margin = theme.sizes.dashboardItemMargin/2;
 
     useEffect(()=>{
         initGraph(width, height, margin);        
@@ -30,9 +30,14 @@ const ContainerStyled = styled.div`
   height: ${props => props.theme.sizes.dashboardItemHeight}px;
   margin: auto;
   background-color: ${props => props.theme.colors.bg};
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px #00000005;
  
     .bar {
       fill: ${props => props.theme.colors.eden};
+    }
+    .bar2 {
+      fill: ${props => props.theme.colors.mainRed};
     }
 
     text {
@@ -95,6 +100,7 @@ const ContainerStyled = styled.div`
 
 const LayoutStyled = styled.div`
     text-align: center;
+    margin-bottom: 30px;
 `
 
 const SvgStyled = styled.svg`

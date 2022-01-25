@@ -3,11 +3,10 @@ import { useNavigate } from "react-router";
 
 import { loginUser, useAuthDispatch } from "../../context";
 import {GreenBtn} from "../../styles/buttons/GrenBtn";
-import {RedButton} from "../../styles/buttons/RedBtn";
-import {LoginStyled} from "./Login.styled";
+import {SignUpStyled} from "./SignUp.styled";
 
-function Login() {
-  console.log("Login");
+function SignUp() {
+  console.log("SignUp");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -15,7 +14,7 @@ function Login() {
   const dispatch = useAuthDispatch();
   let navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
     try {
       let response = await loginUser(dispatch, { email, password, name });
@@ -26,21 +25,21 @@ function Login() {
     }
   };
 
-  const handleSignUp = async (e) => {
-    e.preventDefault();
-    try {
-      navigate("/signup");
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
-      <LoginStyled>
-       <center>
-        <h1>Login</h1>
-        <form onSubmit={handleLogin}>
+      <SignUpStyled>
+        <h1>SignUp</h1>
+        <form onSubmit={handleSignUp}>
             <table>
                 <tbody>
+                    <tr><label htmlFor="name">Name</label></tr>
+                    <tr>
+                      <input
+                        type="text"
+                        id="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                    </tr>
                     <tr><label htmlFor="email">Email</label></tr>
                     <tr>
                       <input
@@ -59,14 +58,19 @@ function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                       />
                     </tr>
-                    <tr><GreenBtn>login</GreenBtn></tr>
+                    <tr><label htmlFor="password">Confirm password</label></tr>
+                    <tr>
+                      <input
+                        type="password"
+                        id="password"
+                      />
+                    </tr>
+                    <tr><center><GreenBtn>login</GreenBtn></center></tr>
                 </tbody>
             </table>    
         </form>
-        <RedButton onClick={handleSignUp}>SignUp</RedButton>
-      </center>
-     </LoginStyled>     
+     </SignUpStyled>     
   );
 }
 
-export default Login;
+export default SignUp;
