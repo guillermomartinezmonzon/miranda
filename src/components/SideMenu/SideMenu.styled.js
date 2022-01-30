@@ -19,9 +19,9 @@ export const StyledSideMenu = styled.div`
       align-items: flex-end;
       display: flex;
       height: 57px;
-      justify-content: flex-start;
-      margin-left: 20px;
-      width: ${props => props.theme.sizes.sizeSideMenu}px;
+      justify-content: center;
+      margin-right: 30px;
+      width: 100%;
 
       .hotel-container {
           align-items: flex-start;

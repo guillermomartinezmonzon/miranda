@@ -1,16 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { getAPI } from "../../api";
 
 export const fetchRoomsList = createAsyncThunk(
-  "rooms/fetchRoomsList",
-  async (thunkAPI) => {
-    const res = await fetch("data/rooms.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }).then((data) => data.json());
-    return res;
-  }
+    "rooms/fetchRoomsList",
+    async () => {
+       return await getAPI('rooms')
+          .then((data) => {return data});
+    }
 );
 
 export const RoomsSlice = createSlice({

@@ -10,10 +10,8 @@ export const TitleTopMenuStyled = ({children}) => {
 
 export const TopMenuStyled = styled.div`
   height: ${props => props.theme.sizes.heightTopMenu}px;
-  position: fixed;
-  top: 0;
-  left: ${p=>p.theme.sizes.sizeSideMenu}px;
   display: flex;
+  width: 100%;
   align-items: center;
   justify-items: space-around;
   background-color: ${props => props.theme.colors.bg};
@@ -25,8 +23,11 @@ export const TopMenuStyled = styled.div`
 
 export const TitleTopMenu = styled.div`
     display: flex;
-    position: fixed;
-    left: ${props => props.theme.sizes.sizeSideMenu};
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 30px;
+    position: relative;
+    width: 100%;
     font-size: 32px;
     i {
         margin: 15px;
@@ -36,7 +37,6 @@ export const TitleTopMenu = styled.div`
  
 export const IconsTopMenuStyled = styled.div`
     width: ${props => props.theme.sizes.widthTopMenuIcons}px;
-    margin-left: ${props => props.theme.sizes.widthIn - props.theme.sizes.widthTopMenuIcons}px;
    display: flex;
    justify-content: center;
    align-items: center;

@@ -28,7 +28,7 @@ export default function Users() {
   return (
     <Container>
       <SideMenu />
-      <PanelContainerStyled>
+      <PanelContainerStyled id="panelIn">
         <TopMenu title={"Users"}/>
         <InContainerStyled>  
             {renderTableUsers()}

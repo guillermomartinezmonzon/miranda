@@ -29,8 +29,33 @@ export const LinksContainer = styled.div`
   width: ${props => props.theme.sizes.sizeSideMenu}px;
 `
 
-export const LinkStyled = styled(Link)(({ path, theme }) => ({
-  color: path ? theme.colors.mainRed : theme.colors.mainGreen,
+// export const LinkStyled = styled(Link)`
+//        color: ${p => p.theme.colors.mainGreen };
+//        text-decoration: none;
+//        display: flex;
+//        align-items: center;
+//        text-align: left;
+//        font-size: 22px;  
+//        font-weight: 500;
+//        margin: 20px;  
+//        margin-left: 100px;  
+
+//         &:hover{
+//             color: ${p => p.theme.colors.greenLight};
+//         }
+//         &:active{
+//             color: ${p => p.theme.colors.mainRed};
+//         }
+//         &:focus {
+//             color: ${p => p.theme.colors.mainGreen};
+//         }
+//         &:target {
+//             color: ${p => p.theme.colors.greenLight};
+//         }
+// `;
+
+export const LinkStyled = styled(Link)(({ active, theme }) => ({
+  color: active ? theme.colors.mainRed : theme.colors.mainGreen,
   textDecoration: "none",
   display: "flex",
   alignItems: "center",

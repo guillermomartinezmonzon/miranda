@@ -27,7 +27,7 @@ export default function Contact() {
     return (
       <Container>
         <SideMenu />
-        <PanelContainerStyled>
+        <PanelContainerStyled id="panelIn">
           <TopMenu title={"Contact"}/>
           <InContainerStyled>  
               {renderTableContact()}

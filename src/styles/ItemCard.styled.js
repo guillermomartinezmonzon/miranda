@@ -4,7 +4,7 @@ export const ItemCardStyled = styled.div`
   display: flex;
   align-item: center;
   justify-content: center;
-  max-width: 90%;
+  width: ${p => p.customWidht}px;
   margin-inline: 0.7rem;
 
   #view_notes_btn {

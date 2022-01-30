@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 
+
 export const BookingDownStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: ${p=>p.theme.sizes.widthIn}px;
+    width: 100%;
     height: 500px;
     background-color: ${p=>p.theme.colors.desert};
     border-radius: 8px;

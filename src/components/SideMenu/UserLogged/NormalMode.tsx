@@ -20,7 +20,8 @@ export const NormalMode = () => {
             src="https://cdn.schoolstickers.com/products/en/819/10MM_SMILE-03.png"
             alt=""
           />
-          <h2>{userDetails.user.name}</h2>
+          <h2>{userDetails && userDetails.user.name}</h2>
+          <p>{userDetails.user.phone}</p>
           <h3>{userDetails.user.email}</h3>
           <p><GreenBtn onClick={handleEdit}>Edit</GreenBtn></p>  
       </div>

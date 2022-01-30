@@ -12,7 +12,7 @@ export default function App() {
     return (
         <Container>
             <SideMenu />
-            <PanelContainerStyled>
+            <PanelContainerStyled id="panelIn">
                 <TopMenu title={title}/>
                 <Head/>
                 <InContainerStyled id="in-dashboard">

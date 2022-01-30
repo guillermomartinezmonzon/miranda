@@ -4,11 +4,14 @@ import { ItemCardStyled } from "../../../styles/ItemCard.styled";
 export default function CardUser(user) {
   return (
     <CardStyled key={user.user.id}>
-      <ItemCardStyled>{user.user.user_name}</ItemCardStyled>
-      <ItemCardStyled>{user.user.job_desk}</ItemCardStyled>
-      <ItemCardStyled>{user.user.schedule}</ItemCardStyled>
-      <ItemCardStyled>{user.user.phone}</ItemCardStyled>
-      <ItemCardStyled>{user.user.status}</ItemCardStyled>
+      <ItemCardStyled customWidht={10}>{user.user.name}</ItemCardStyled>
+      <ItemCardStyled customWidht={10}>{user.user.email}</ItemCardStyled>
+      <ItemCardStyled customWidht={10}>{user.user.startDate}</ItemCardStyled>
+      <ItemCardStyled customWidht={10}>{user.user.phone}</ItemCardStyled>
+      <ItemCardStyled customWidht={10}>{user.user.description}</ItemCardStyled>
+      <ItemCardStyled customWidht={10}>{user.user.status}</ItemCardStyled>
+      <ItemCardStyled customWidht={10}>{user.user.job}</ItemCardStyled>
+      <ItemCardStyled customWidht={10}>{user.user.image}</ItemCardStyled>
     </CardStyled>
   );
 }

@@ -1,8 +1,10 @@
+import {putAPI} from "../api";
+
 let user = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser")).user
   : "";
 let token = localStorage.getItem("currentUser")
-  ? JSON.parse(localStorage.getItem("currentUser")).auth_token
+  ? JSON.parse(localStorage.getItem("currentUser")).token
   : "";
 let isAuth = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser")).isAuth
@@ -15,6 +17,10 @@ export const initialState = {
   isAuth: false || isAuth,
 };
 
+async function changeUserAPI(user, oldMail){
+    return await putAPI('users', oldMail, user)
+}
+
 export const AuthReducer = (initialState, action) => {
   switch (action.type) {
     case "REQUEST_LOGIN":
@@ -26,9 +32,9 @@ export const AuthReducer = (initialState, action) => {
       return {
         ...initialState,
         user: action.payload.user,
-        token: action.payload.auth_token,
+        token: action.payload.token,
         loading: false,
-        isAuth: action.payload.isAuth,
+        isAuth: true,
       };
     case "LOGOUT":
       return {
@@ -43,6 +49,15 @@ export const AuthReducer = (initialState, action) => {
         isAuth: !initialState.isAuth,
       };
     case "CHANGE_USER":
+      changeUserAPI(action.payload, initialState.user.email)
+          .then(res=> {
+              initialState.user.email = action.payload.email;
+              initialState.user.name = action.payload.name;
+              alert(res)
+              localStorage.setItem("currentUser", JSON.stringify(initialState));
+              return res
+          })
+          .catch(e=>{alert(e)});
       return {
         ...initialState,
         user: action.payload,

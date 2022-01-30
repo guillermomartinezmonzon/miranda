@@ -11,7 +11,7 @@ export const CardLoggedStyled = styled.div`
   text-align: center;
   border-radius: 20px;
   padding: 20px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: 0px 20px 30px #00000014;
   label {
     color: ${props => props.theme.colors.mainRed};
   }

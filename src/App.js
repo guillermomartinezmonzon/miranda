@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Users from "./pages/Users/Users";
@@ -11,7 +10,6 @@ import Login from "./pages/Login";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/Theme.styled";
 import { AuthProvider } from "./context";
-import SignUp from "./pages/SignUp";
 
 export default function App() {
   return (
@@ -20,7 +18,7 @@ export default function App() {
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Routes>
             <Route
-              path="/" 
+              path="" 
               element={
                 <PrivateRoute>
                   <Dashboard />
@@ -34,25 +32,15 @@ export default function App() {
                   <Bookings />
                 </PrivateRoute>
               }
-            >
-              <Route
-                path=":bookingId"
-                element={
-                  <PrivateRoute>
-                    <Booking />
-                  </PrivateRoute>
-                }
-              >
-                <Route
-                  path="create"
-                  element={
-                    <PrivateRoute>
-                      <Booking />
-                    </PrivateRoute>
-                  }
-                />
-              </Route>
-            </Route>
+            />
+            <Route
+              path="bookings/:element"
+              element={
+                <PrivateRoute>
+                  <Booking/>
+                </PrivateRoute>
+              }
+            />
             <Route
               path="contact"
               element={
@@ -76,16 +64,7 @@ export default function App() {
                     <Rooms />
                   </PrivateRoute>
                 }
-              >
-                <Route
-                  path="edit"
-                  element={
-                    <PrivateRoute>
-                      <Rooms />
-                    </PrivateRoute>
-                  }
-                />
-              </Route>
+              />
             </Route>
             <Route
               path="users"
@@ -114,7 +93,6 @@ export default function App() {
               </Route>
             </Route>
             <Route path="login" element={<Login />} />
-            <Route path="signup" element={<SignUp />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

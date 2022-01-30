@@ -17,11 +17,14 @@ export default function TopMenu(props: any) {
   function colapseMenu() {
       setColapse(!colapse);
       const menu =document.getElementById("sideMenu"); 
-      if (menu){ 
+      const panelIn = document.getElementById("panelIn");
+      if (menu && panelIn){ 
          if (colapse) {
               menu.style.display = "none";
+              panelIn.style.marginLeft = "0px";
          } else {    
               menu.style.display = "flex"; 
+              panelIn.style.marginLeft = "345px";
          } 
       }
   };
@@ -30,7 +33,7 @@ export default function TopMenu(props: any) {
     <TopMenuStyled>
       <TitleTopMenuStyled>
           <button onClick={colapseMenu}>
-              <i className="fas fa-bars fa-lg"></i>
+              <i className="fas fa-bars fa-3x"></i>
           </button>
           {title}
       </TitleTopMenuStyled>

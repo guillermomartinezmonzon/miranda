@@ -39,28 +39,24 @@ export const CardRoomContainer = () => {
   );
   const renderCard = (room, index) => {
     const {
-      id,
-      room_name,
-      bed_type,
-      room_floor,
+      _id,
+      name,
+      type,
+      number,
       facilities,
-      rate,
       status,
-      image,
     } = room;
     return (
       <CardRoom
         index={index}
         moveCard={moveCard}
-        key={id}
-        id={id}
-        room_name={room_name}
-        bed_type={bed_type}
-        room_floor={room_floor}
+        key={_id}
+        id={_id}
+        room_name={name}
+        bed_type={type}
+        room_floor={number}
         facilities={facilities}
-        rate={rate}
         status={status}
-        image={image}
       />
     );
   };

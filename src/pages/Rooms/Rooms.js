@@ -10,7 +10,7 @@ export default function Rooms() {
   return (
     <Container>
       <SideMenu />
-      <PanelContainerStyled>
+      <PanelContainerStyled id="panelIn">
         <TopMenu title={"Rooms"}/>
         <InContainerStyled>  
             <DndProvider backend={HTML5Backend}>

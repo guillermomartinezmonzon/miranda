@@ -6,25 +6,23 @@ import UserLogged from "./UserLogged/UserLogged";
 
 export default function SideMenu() {
   let path = useLocation().pathname;
-
   return (
     <StyledSideMenu id="sideMenu">
           <Logo/>
           <LinksContainer> 
-              <LinkStyled path={path.length < 2  ? 1 : 0} to="/">
-                  <IconLinkStyled/>
+              <LinkStyled to="/" active={path === '/'} >
                   Dashboard
               </LinkStyled>
-              <LinkStyled path={path.includes("bookings") ?  1 : 0} to="/bookings">
+              <LinkStyled to="/bookings" active={path === '/bookings'}>
                 Bookings
               </LinkStyled>
-              <LinkStyled path={path.includes("rooms") ? 1 :  0} to="/rooms">
+              <LinkStyled to="/rooms" active={path === '/rooms'}>
                  Rooms
               </LinkStyled>
-              <LinkStyled path={path.includes("contact") ? 1 : 0} to="/contact">
+              <LinkStyled to="/contact" active={path === '/contact'}>
                 Contact
               </LinkStyled>
-              <LinkStyled path={path.includes("users") ? 1 : 0} to="/users">
+              <LinkStyled to="/users" active={path === '/users'}>
                 Users
               </LinkStyled>
           </LinksContainer>

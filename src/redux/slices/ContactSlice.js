@@ -1,17 +1,26 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {getAPI} from "../../api";
 
 export const fetchContactList = createAsyncThunk(
-  "contact/fetchContactList",
-  async (thunkAPI) => {
-    const res = await fetch("data/contact.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }).then((data) => data.json());
-    return res;
-  }
+    "contact/fetchContactList",
+    async () => {
+       return await getAPI('contact')
+          .then((data) => {return data});
+    }
 );
+
+// export const fetchContactList = createAsyncThunk(
+//   "contact/fetchContactList",
+//   async (thunkAPI) => {
+//     const res = await fetch("data/contact.json", {
+//       headers: {
+//         "Content-Type": "application/json",
+//         Accept: "application/json",
+//       },
+//     }).then((data) => data.json());
+//     return res;
+//   }
+// );
 
 export const ContactSlice = createSlice({
   name: "contact",

@@ -16,7 +16,6 @@ export const CardRoom = ({
   bed_type,
   room_floor,
   facilities,
-  rate,
   status,
   image,
 }) => {
@@ -86,7 +85,7 @@ export const CardRoom = ({
       <ItemCardStyled>{bed_type}</ItemCardStyled>
       <ItemCardStyled>{room_floor}</ItemCardStyled>
       <ItemCardStyled>{facilities}</ItemCardStyled>
-      <ItemCardStyled>{rate}</ItemCardStyled>
+      <ItemCardStyled>{image}</ItemCardStyled>
       <ItemCardStyled>{status}</ItemCardStyled>
     </CardStyled>
   );

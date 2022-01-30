@@ -5,10 +5,9 @@ export const HeadStyled = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    width: ${p=>p.theme.sizes.widthIn}px;
+    width: 100%;
     height: 200px;
     background-color: ${p=>p.theme.colors.desert};
-    margin-top: 120px;
 `
 
 export const HeadCardStyled = styled.div`
@@ -16,7 +15,7 @@ export const HeadCardStyled = styled.div`
     align-items: center;
     justify-content: left;
     background-color: white;
-    width: 340px;
+    width: 22%;
     height: 125px;
     margin: 25px;
     border-radius: 8px;
