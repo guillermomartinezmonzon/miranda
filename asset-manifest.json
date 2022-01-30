@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/miranda/static/js/main.262e2bad.chunk.js",
-    "main.js.map": "/miranda/static/js/main.262e2bad.chunk.js.map",
+    "main.js": "/miranda/static/js/main.412d6d47.chunk.js",
+    "main.js.map": "/miranda/static/js/main.412d6d47.chunk.js.map",
     "runtime-main.js": "/miranda/static/js/runtime-main.87cd4cc9.js",
     "runtime-main.js.map": "/miranda/static/js/runtime-main.87cd4cc9.js.map",
     "static/css/2.b7efc914.chunk.css": "/miranda/static/css/2.b7efc914.chunk.css",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.87cd4cc9.js",
     "static/css/2.b7efc914.chunk.css",
     "static/js/2.ad3a605b.chunk.js",
-    "static/js/main.262e2bad.chunk.js"
+    "static/js/main.412d6d47.chunk.js"
   ]
 }
