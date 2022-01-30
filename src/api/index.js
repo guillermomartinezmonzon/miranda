@@ -5,7 +5,7 @@ let token = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser")).token
   : "";
 
-const apiUrl = process.env.URL_API || 'http://localhost:3000/api/';
+const apiUrl = 'https://mirandafront.gmonzon.com/api/';
 
 let headers = {
     headers: {
