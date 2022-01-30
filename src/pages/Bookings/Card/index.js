@@ -24,7 +24,7 @@ export default function CardBooking(item) {
         .toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
 
   return (
-      <BookingCardStyled onClick={e => handleOpen(e, item.item._id)} key={item.item._id}>
+      <BookingCardStyled key={item.item._id}>
         <BookingItemCardStyled customWidht="242px">
             <ImageGuest image={item.item.guest.image}/>
             <span>{item.item.guest.firstName}<br />{item.item.guest.lastName}</span>
@@ -37,7 +37,7 @@ export default function CardBooking(item) {
         </BookingItemCardStyled>
         <BookingItemCardStyled customWidht="186px">{item.item.room.type}</BookingItemCardStyled>
         <BookingItemCardStyled customWidht="126px">$ {item.item.price}</BookingItemCardStyled>
-        <BookingItemCardStyled customWidht="206px" id="status" status={item.item.status}>
+        <BookingItemCardStyled onClick={e => handleOpen(e, item.item._id)} customWidht="206px" id="status" status={item.item.status}>
             {item.item.status}
         </BookingItemCardStyled>
         <BookingItemCardStyled  style={{marginRight: 20}} customWidht="40px">
@@ -92,6 +92,9 @@ const BookingItemCardStyled = styled.div`
     ${({ status }) =>
         status === "Check In" &&
         `
+        &:hover{
+            cursor:pointer;
+        }
         align-items: center;
         justify-content: center;
         text-size: 12px;
@@ -106,6 +109,9 @@ const BookingItemCardStyled = styled.div`
     ${({ status }) =>
         status === "In Progress" &&
         `
+        &:hover{
+            cursor:pointer;
+        }
         align-items: center;
         justify-content: center;
         text-size: 12px;
@@ -120,6 +126,9 @@ const BookingItemCardStyled = styled.div`
     ${({ status }) =>
         status === "Check Out" &&
         `
+        &:hover{
+            cursor:pointer;
+        }
         align-items: center;
         justify-content: center;
         text-size: 12px;
