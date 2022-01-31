@@ -5,7 +5,8 @@ let token = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser")).token
   : "";
 
-const apiUrl = 'https://mirandafront.gmonzon.com/api/';
+// const apiUrl = process.env.URL_API || 'https://mirandafront.gmonzon.com/api/';
+const apiUrl = "http://localhost:3000/api/"
 
 let headers = {
     headers: {
@@ -14,8 +15,32 @@ let headers = {
     }
 }
 
+export async function checkAPI(){
+    console.log("checkAPI")
+    let i = await axios
+        .post(`${apiUrl}login`, 
+            {
+                headers: {
+                    'Content-Type': 'application/json'  
+                }
+            }
+            )
+            .then(res => {
+                console.log(res.data);
+                if (res.data) return true;
+                return res.data
+
+            })
+            .catch((error) => {
+                console.log(error)
+                return false
+            })
+    console.log(i)
+}
+
 export async function loginAPI(email, password){
     console.log('fetchLogin');
+    console.log(apiUrl+"/login");
     return await axios
         .post(`${apiUrl}login`, 
             {
@@ -42,6 +67,7 @@ export async function loginAPI(email, password){
 
 export async function postAPI(url, body){
     console.log('postAPI');
+    console.log(apiUrl+url)
     return await axios
         .post(`${apiUrl}${url}`,body, headers) 
             .then(res => {
@@ -69,6 +95,7 @@ export async function postAPI(url, body){
 
 export async function getAPI(url){
     console.log('getAPI');
+    console.log(apiUrl+url)
     return await axios
         .get(`${apiUrl}${url}`, headers) 
             .then(res => {
@@ -84,6 +111,7 @@ export async function getAPI(url){
 
 export async function deleteAPI(url, id2){
     console.log('deleteAPI');
+    console.log(apiUrl+url+"/"+id2)
     return await axios
         .delete(`${apiUrl}${url}/${id2}`, headers)
             .then(res => {
@@ -99,6 +127,7 @@ export async function deleteAPI(url, id2){
 
 export async function putAPI(url, id2, body){
     console.log('putAPI');
+    console.log(apiUrl+url+"/"+id2)
     return await axios
         .put(`${apiUrl}${url}/${id2}`, body, headers)
             .then(res => {

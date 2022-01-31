@@ -17,9 +17,9 @@ export const theme = {
   },
   sizes: {
     // some sizes in PX  
-    sizeSideMenu: 345,  
+    sizeSideMenu: 21,// %  
     heightTopMenu: 120,
-    widthIn: 100, // %  
+    widthIn: 79, // %  
     heightIn: 1200,  
     InPadding: 20,
     dashboardItemHeight: 510,

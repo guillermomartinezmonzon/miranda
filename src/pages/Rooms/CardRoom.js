@@ -1,7 +1,6 @@
+import styled from 'styled-components';
 import { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
-import { CardStyled } from "../../styles/Card.styled";
-import { ItemCardStyled } from "../../styles/ItemCard.styled";
 
 const styleImg = {
   width: "30px",
@@ -77,16 +76,56 @@ export const CardRoom = ({
   });
   drag(drop(ref));
   return (
-    <CardStyled ref={ref} data-handler-id={handlerId}>
-      <ItemCardStyled>
+    <RoomCardStyled ref={ref} data-handler-id={handlerId}>
+      <RoomItemCardStyled>
         <img style={styleImg} src={image} alt="" />
-      </ItemCardStyled>
-      <ItemCardStyled>{room_name}</ItemCardStyled>
-      <ItemCardStyled>{bed_type}</ItemCardStyled>
-      <ItemCardStyled>{room_floor}</ItemCardStyled>
-      <ItemCardStyled>{facilities}</ItemCardStyled>
-      <ItemCardStyled>{image}</ItemCardStyled>
-      <ItemCardStyled>{status}</ItemCardStyled>
-    </CardStyled>
+      </RoomItemCardStyled>
+      <RoomItemCardStyled>{room_name}</RoomItemCardStyled>
+      <RoomItemCardStyled>{bed_type}</RoomItemCardStyled>
+      <RoomItemCardStyled>{room_floor}</RoomItemCardStyled>
+      <RoomItemCardStyled>{facilities}</RoomItemCardStyled>
+      <RoomItemCardStyled>{image}</RoomItemCardStyled>
+      <RoomItemCardStyled>{status}</RoomItemCardStyled>
+    </RoomCardStyled>
   );
 };
+
+const RoomCardStyled = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+    background-color: white;
+    border-radius: 8px;
+    height: ${p => p.theme.sizes.cardHeight}px;
+    width: 90%;
+    white-space:nowrap;
+    margin: 3px;
+    :hover {
+        background-color: ${props => props.theme.colors.bg};
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+`
+
+const RoomItemCardStyled = styled.div`
+    text-align: left;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: ${p => p.customWidht}};
+
+    i{
+        margin-inline: 20px;
+        background:none;
+        border:none;
+        cursor: pointer;
+    }
+
+    ${({ status }) =>
+        status === "Check In" &&
+        `
+    `}
+
+`;

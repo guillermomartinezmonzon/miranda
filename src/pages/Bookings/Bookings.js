@@ -1,10 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import CardBooking from "./Card";
-import SideMenu from "../../components/SideMenu/SideMenu";
-import TopMenu from "../../components/TopMenu/TopMenu";
 import { fetchBookingsList, selector } from "../../redux/slices/BookingsSlice";
-import { Container } from "../../styles/Container.styled";
-import { InContainerStyled, PanelContainerStyled } from "../../styles/PanelContainer.styled";
 import { useState, useEffect } from "react";
 import {Head} from "./head";
 import styled from "styled-components";
@@ -21,10 +17,6 @@ export default function Bookings() {
     const [pageCount, setPageCount] = useState(0);
     const [bookingsData, setBookingsData] = useState([]);
 
-    useEffect(() => {
-        setPageCount(Math.ceil(bookingsList.length/perPage))
-        setBookingsData(bookingsList.slice(offset, offset+perPage))
-    }, [offset])
 
     useEffect(() => {
         dispatch(fetchBookingsList());
@@ -35,7 +27,7 @@ export default function Bookings() {
         setOffset((selectedPage + 1)*perPage)
     }
   
-  function renderHeader(){
+  function Header(){
     return (
         <HeaderDiv>
             <div style={{marginLeft: 20, width: "222px"}}>Guest</div>
@@ -51,41 +43,45 @@ export default function Bookings() {
     )
   }
 
-  function renderTableData() {
+  function TableData() {
+    useEffect(() => {
+        setPageCount(Math.ceil(bookingsList.length/perPage))
+        setBookingsData(bookingsList.slice(offset, offset+perPage))
+    }, [offset])
     return bookingsData.map((item) => {
       return <CardBooking key={item._id} item={item} />;
     });
   }
 
+
   if (loading || !bookingsList) {
-    return (
-        <Layout>
-          <h2>Loading...</h2>
-        </Layout>
-    );
+        return (
+            <Layout>
+              <h2>Loading...</h2>
+            </Layout>
+        );
+  } else {
+      return (
+         <Layout title={"Bookings"}>
+              <Head/>
+              <Header/>
+              <TableData/>
+              <ReactPaginate
+                  previousLabel={"<"}
+                  nextLabel={">"}
+                  breakLabel={"..."}
+                  breakClassName={"break-me"}
+                  pageCount={pageCount}
+                  marginPagesDisplayed={2}
+                  pageRangeDisplayed={5}
+                  onPageChange={handlePageClick}
+                  containerClassName={"pagination"}
+                  subContainerClassName={"pages pagination"}
+                  activeClassName={"active"}/>
+          </Layout>
+      );
   }
-
-  return (
-     <Layout title={"Bookings"}>
-          <Head/>
-          {renderHeader()}
-          {renderTableData()}
-          <ReactPaginate
-              previousLabel={"<"}
-              nextLabel={">"}
-              breakLabel={"..."}
-              breakClassName={"break-me"}
-              pageCount={pageCount}
-              marginPagesDisplayed={2}
-              pageRangeDisplayed={5}
-              onPageChange={handlePageClick}
-              containerClassName={"pagination"}
-              subContainerClassName={"pages pagination"}
-              activeClassName={"active"}/>
-      </Layout>
-  );
 }
-
 
 const HeaderDiv = styled.div`
     font-size: 16px;
@@ -99,6 +95,6 @@ const HeaderDiv = styled.div`
     flex-direction: row;
     margin-bottom: 3px;
     height: ${p => p.theme.sizes.cardHeight}px;
-    width: 90%;
+    width: 95%;
     white-space:nowrap;
 `

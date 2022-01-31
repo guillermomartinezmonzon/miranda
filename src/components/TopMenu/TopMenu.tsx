@@ -21,10 +21,10 @@ export default function TopMenu(props: any) {
       if (menu && panelIn){ 
          if (colapse) {
               menu.style.display = "none";
-              panelIn.style.marginLeft = "0px";
+              panelIn.style.width = "100%";
          } else {    
               menu.style.display = "flex"; 
-              panelIn.style.marginLeft = "345px";
+              panelIn.style.width = "82%";
          } 
       }
   };

@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import DatePicker from "react-modern-calendar-datepicker";
-import {FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import Picker from './Picker';
 
 export function Head(){
@@ -25,48 +24,53 @@ export function Head(){
 
     )
 }
+// const Dates = () => {
+//   const [selectedDayRange, setSelectedDayRange] = useState({
+//     from: null,
+//     to: null
+//   });
+//   return (
+//     <DatePicker
+//       value={selectedDayRange}
+//       onChange={setSelectedDayRange}
+//       inputPlaceholder="Select a Check In & Check Out"
+//       shouldHighlightWeekends
+//       inputClassName="date-picker"
+//     />
+//   );
+// };
 
 const Dates = () => {
   const [selectedDayRange, setSelectedDayRange] = useState({
     from: null,
     to: null
   });
+
+  // render regular HTML input element
+  const renderCustomInput = ({ ref }) => (
+    <input
+      readOnly
+      ref={ref} // necessary
+      placeholder={selectedDayRange}
+      value={"Select your day range"}
+      className="date-picker" // a styling class
+    />
+  )
+
   return (
     <DatePicker
       value={selectedDayRange}
       onChange={setSelectedDayRange}
-      inputPlaceholder="Select a Check In & Check Out"
+      renderInput={renderCustomInput} // render a custom input
       shouldHighlightWeekends
-      inputClassName="date-picker"
     />
   );
 };
 
-// const Picker = () => {
-//     function handleChange(){}
-//     return (
-//         <FormControl fullWidth>
-//           <InputLabel id="demo-simple-select-label">Age</InputLabel>
-//           <Select
-//             labelId="demo-simple-select-label"
-//             id="demo-simple-select"
-//             value={"value"}
-//             label="Age"
-//             onChange={handleChange}
-//           >
-//             <MenuItem value={10}>Ten</MenuItem>
-//             <MenuItem value={20}>Twenty</MenuItem>
-//             <MenuItem value={30}>Thirty</MenuItem>
-//           </Select>
-//         </FormControl>
-//     )
-// }
-
-
 const HeadContainer = styled.div`
-    width: 90%;
-    margin: 40px;
-    height: 49px;
+    width: 95%;
+    margin-inline: 4%;
+    height: 69px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -80,7 +84,7 @@ const HeadLeft = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    width: 100%;
+    width: 50%;
     color: ${p => p.theme.colors.shark}
 `
 const HeadRight = styled.div`
@@ -89,7 +93,7 @@ const HeadRight = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
-    width: 100%;
+    width: 50%;
 `
 const StyledLink = styled(Link)`
         padding: 8px 16px;
@@ -100,47 +104,29 @@ const StyledLink = styled(Link)`
         text-decoration: none;
 
         &:hover{
-            color: ${p => p.theme.colors.greenLight};
-            border-bottom: 2px solid ${p => p.theme.colors.greenLight};
-        }
-        &:active{
             color: ${p => p.theme.colors.mainGreen};
             border-bottom: 2px solid ${p => p.theme.colors.mainGreen};
         }
         &:focus {
-            color: ${p => p.theme.colors.mainGreen};
-            border-bottom: 2px solid ${p => p.theme.colors.mainGreen};
-        }
-        &:target {
-            color: ${p => p.theme.colors.greenLight};
-            border-bottom: 2px solid ${p => p.theme.colors.greenLight};
+            color: ${p => p.theme.colors.mainRed};
+            border-bottom: 2px solid ${p => p.theme.colors.mainRed};
         }
 `;
-
+// class="DatePicker__input -ltr date-picker"
 const CalendarHead = styled.div`
     i{
         margin-right: 25px;
     }
-    .date-picker{
+    .date-picker {
         border-radius: 12px;
         color: white;
+        border: none;
+        padding: 15px;
         font-size: 16px;
-        width: 427px;
+        width: 50%;
         background-color: ${p => p.theme.colors.mainGreen};
-        margin: 35px;
         height: 100%;
         justify-content: space-between;
         white-space:nowrap;
     }
-`
-
-const DateDiv = styled.div`
-    width: 160px;
-    font-size: 16px;
-    width: 100%;
-    margin-inline: 8%;
-`
-
-const SortHead = styled.div`
-    margin: 35px;
 `

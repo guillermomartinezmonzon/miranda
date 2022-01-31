@@ -1,11 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import CardContact from "./Card";
-import SideMenu from "../../components/SideMenu/SideMenu";
-import TopMenu from "../../components/TopMenu/TopMenu";
 import { selector, fetchContactList } from "../../redux/slices/ContactSlice";
-import { Container } from "../../styles/Container.styled";
-import { InContainerStyled, PanelContainerStyled } from "../../styles/PanelContainer.styled";
+import Layout from "../../components/layout";
 
 export default function Contact() {
   const dispatch = useDispatch();
@@ -16,24 +13,14 @@ export default function Contact() {
     dispatch(fetchContactList());
   }, []);
 
-  function renderTableContact() {
+  function RenderTableContact() {
     return contactList.map((item, index) => {
       return <CardContact key={item.id} item={item} />;
     });
   }
-  if (loading) {
-    return <p>Loading...</p>;
-  } else {
-    return (
-      <Container>
-        <SideMenu />
-        <PanelContainerStyled id="panelIn">
-          <TopMenu title={"Contact"}/>
-          <InContainerStyled>  
-              {renderTableContact()}
-          </InContainerStyled>    
-        </PanelContainerStyled>
-      </Container>
+  return (
+        <Layout title="Contacts">
+            {!loading ? <RenderTableContact/> : <h2>Loading...</h2>}
+        </Layout>
     );
-  }
 }

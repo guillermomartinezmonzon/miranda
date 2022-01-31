@@ -65,7 +65,7 @@ const BookingCardStyled = styled.div`
     background-color: white;
     border-radius: 8px;
     height: ${p => p.theme.sizes.cardHeight}px;
-    width: 90%;
+    width: 95%;
     white-space:nowrap;
     margin: 3px;
     :hover {
