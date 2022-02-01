@@ -21,6 +21,10 @@ export default function Bookings() {
     useEffect(() => {
         dispatch(fetchBookingsList());
     }, []);
+    useEffect(() => {
+        setPageCount(Math.ceil(bookingsList.length/perPage))
+        setBookingsData(bookingsList.slice(offset, offset+perPage))
+    }, [offset, bookingsList])
 
     const handlePageClick = (e) => {
         const selectedPage = e.selected;
@@ -30,24 +34,19 @@ export default function Bookings() {
   function Header(){
     return (
         <HeaderDiv>
-            <div style={{marginLeft: 20, width: "222px"}}>Guest</div>
-            <div style={{width: "237px"}}>Order Date</div>
-            <div style={{width: "227px" }}>Check In</div>
-            <div style={{width: "227px"}}>Check Out</div>
-            <div style={{width: "240px"}}>Special Request</div>
-            <div style={{width: "186px"}}>Room type</div>
-            <div style={{width: "126px"}}>Price</div>
-            <div style={{width: "206px"}}>Status</div>
-            <div style={{width: "40px", marginRight: 20}}></div>
+            <div style={{paddingLeft: '2%', width: "16%"}}>Guest</div>
+            <div style={{width: "13%"}}>Order Date</div>
+            <div style={{width: "13%" }}>Check In</div>
+            <div style={{width: "12%"}}>Check Out</div>
+            <div style={{width: "13%"}}>Special Request</div>
+            <div style={{width: "10%"}}>Room type</div>
+            <div style={{width: "6%"}}>Price</div>
+            <div style={{width: "15%"}}>Status</div>
         </HeaderDiv>
     )
   }
 
   function TableData() {
-    useEffect(() => {
-        setPageCount(Math.ceil(bookingsList.length/perPage))
-        setBookingsData(bookingsList.slice(offset, offset+perPage))
-    }, [offset])
     return bookingsData.map((item) => {
       return <CardBooking key={item._id} item={item} />;
     });

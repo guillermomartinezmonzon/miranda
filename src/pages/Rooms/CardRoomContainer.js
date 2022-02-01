@@ -9,7 +9,11 @@ import { useCallback, useEffect, useState } from "react";
 import { CardRoom } from "./CardRoom";
 
 const style = {
-  width: "90%",
+  width: "100%",
+    display: 'flex',
+  alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
 };
 export const CardRoomContainer = () => {
   const dispatch = useDispatch();
@@ -35,27 +39,33 @@ export const CardRoomContainer = () => {
       );
       dispatch(setRooms(roomsOrder));
     },
-    [roomsOrder]
+    [roomsOrder, roomsList]
   );
   const renderCard = (room, index) => {
     const {
-      _id,
-      name,
-      type,
-      number,
-      facilities,
-      status,
+        images,
+        number,
+        name,
+        _id,
+        type,
+        facilities,
+        price,
+        priceOffer,
+        status
     } = room;
     return (
       <CardRoom
         index={index}
         moveCard={moveCard}
-        key={_id}
-        id={_id}
-        room_name={name}
-        bed_type={type}
-        room_floor={number}
+        key={index}
+        images={images}
+        number={number}
+        name={name}
+        _id={_id}
+        type={type}
         facilities={facilities}
+        price={price}
+        priceOffer={priceOffer}
         status={status}
       />
     );

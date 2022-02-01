@@ -9,15 +9,14 @@ export function Head(){
     return (
         <HeadContainer>
             <HeadLeft>
-                <StyledLink to="">All bookings</StyledLink>
-                <StyledLink to="">Checking In</StyledLink>
-                <StyledLink to="">Checking Out</StyledLink>
-                <StyledLink to="">In progress</StyledLink>
+                <StyledLink to="">All rooms</StyledLink>
+                <StyledLink to="">Available</StyledLink>
+                <StyledLink to="">Booked</StyledLink>
             </HeadLeft>
             <HeadRight>
-                <CalendarHead>
-                    <Dates/>
-                </CalendarHead>
+                <NewRoomHead>
+                    <button>+ New Room</button>
+                </NewRoomHead>
                 <Picker/>
             </HeadRight>
         </HeadContainer>
@@ -40,41 +39,6 @@ export function Head(){
 //   );
 // };
 
-const Dates = () => {
-  const [selectedDayRange, setSelectedDayRange] = useState({
-    from: null,
-    to: null
-  });
-
-  var months = [ "January", "February", "March", "April", "May", "June",
-           "July", "August", "September", "October", "November", "December" ];
-
-  // render regular HTML input element
-  const renderCustomInput = ({ ref }) => (
-    <input
-      readOnly
-      ref={ref} // necessary
-      placeholder={selectedDayRange}
-      value={
-        selectedDayRange.from && selectedDayRange.to ?
-              ` ${months[selectedDayRange.from.month-1]}, ${selectedDayRange.from.day} to ${months[selectedDayRange.to.month-1]}, ${selectedDayRange.to.day}`
-        :
-        `Select your day range`
-      }
-      className="date-picker" // a styling class
-    />
-  )
-      console.log(selectedDayRange)
-
-  return (
-    <DatePicker
-      value={selectedDayRange}
-      onChange={setSelectedDayRange}
-      renderInput={renderCustomInput} // render a custom input
-      shouldHighlightWeekends
-    />
-  );
-};
 
 const HeadContainer = styled.div`
     width: 95%;
@@ -93,7 +57,7 @@ const HeadLeft = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    width: 50%;
+    width: 40%;
     color: ${p => p.theme.colors.shark}
 `
 const HeadRight = styled.div`
@@ -101,7 +65,7 @@ const HeadRight = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-end;
     width: 50%;
 `
 const StyledLink = styled(Link)`
@@ -121,12 +85,12 @@ const StyledLink = styled(Link)`
             border-bottom: 2px solid ${p => p.theme.colors.mainRed};
         }
 `;
-// class="DatePicker__input -ltr date-picker"
-const CalendarHead = styled.div`
+
+const NewRoomHead = styled.div`
     i{
         margin-right: 25px;
     }
-    .date-picker {
+    button {
         border-radius: 12px;
         color: white;
         border: none;

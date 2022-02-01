@@ -20,3 +20,9 @@ export async function logout(dispatch) {
   dispatch({ type: "LOGOUT" });
   localStorage.removeItem("currentUser");
 }
+
+export async function setError(dispatch, error) {
+    dispatch({ type: "SET_ERROR", payload: error});
+  localStorage.removeItem("currentUser");
+}
+

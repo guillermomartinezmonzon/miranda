@@ -1,13 +1,24 @@
 import styled from 'styled-components';
 
 export default function CardContact(item) {
+
+  const dateFormated = item.item.contactDate && new Date(`${item.item.contactDate}`)
+        .toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
+
   return (
     <ContactCardStyled key={item.item._id}>
-      <ContactItemCardStyled>#{item.item._id}</ContactItemCardStyled>
-      <ContactItemCardStyled>{item.item.subject}</ContactItemCardStyled>
-      <ContactItemCardStyled>{item.item.fullName}</ContactItemCardStyled>
-      <ContactItemCardStyled>{item.item.message}</ContactItemCardStyled>
-      <ContactItemCardStyled>
+        <ContactItemCardStyled customWidht="20%">
+            <span>#{item.item._id}</span>
+            <p>{dateFormated}</p>
+            </ContactItemCardStyled>
+        <ContactItemCardStyled customWidht="20%">
+            <span>{item.item.fullName}</span>
+            <p>{item.item.phone}</p>
+            <p>{item.item.email}</p>
+        </ContactItemCardStyled>
+      <ContactItemCardStyled customWidht="20%">{item.item.subject}</ContactItemCardStyled>
+      <ContactItemCardStyled customWidht="20%">{item.item.message}</ContactItemCardStyled>
+      <ContactItemCardStyled customWidht="10%">
         <div id="publish">Publish</div>
         <div id="archive">Archive</div>
       </ContactItemCardStyled>
@@ -23,9 +34,8 @@ const ContactCardStyled = styled.div`
     flex-direction: row;
     background-color: white;
     border-radius: 8px;
-    height: ${p => p.theme.sizes.cardHeight}px;
-    width: 90%;
-    white-space:nowrap;
+    height: 100px;
+    width: 95%;
     margin: 3px;
     :hover {
         background-color: ${props => props.theme.colors.bg};
@@ -34,23 +44,39 @@ const ContactCardStyled = styled.div`
 `
 
 const ContactItemCardStyled = styled.div`
+    white-space: nowrap;
+    overflow: hidden;
     text-align: left;
     font-size: 15px;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     width: ${p => p.customWidht}};
-
+    p{
+        margin:0;
+        color: green;
+        font-size: 14px;
+    }
+    #archive{
+        &:hover{
+            cursor: pointer;
+        }
+        margin: 2%;
+        color: red;
+    }
+    #publish{
+        &:hover{
+            cursor: pointer;
+        }
+        margin: 2%;
+        color: green;
+    }
     i{
         margin-inline: 20px;
         background:none;
         border:none;
         cursor: pointer;
     }
-
-    ${({ status }) =>
-        status === "Check In" &&
-        `
-    `}
 
 `;

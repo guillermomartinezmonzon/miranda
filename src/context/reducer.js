@@ -15,6 +15,7 @@ export const initialState = {
   token: "" || token,
   loading: false,
   isAuth: false || isAuth,
+  error: false,
 };
 
 async function changeUserAPI(user, oldMail){
@@ -47,6 +48,11 @@ export const AuthReducer = (initialState, action) => {
       return {
         ...initialState,
         isAuth: !initialState.isAuth,
+      };
+    case "SET_ERROR":
+      return {
+        ...initialState,
+        error: action.payload.error,
       };
     case "CHANGE_USER":
       changeUserAPI(action.payload, initialState.user.email)

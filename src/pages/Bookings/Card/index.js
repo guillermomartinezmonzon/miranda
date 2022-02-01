@@ -25,22 +25,22 @@ export default function CardBooking(item) {
 
   return (
       <BookingCardStyled key={item.item._id}>
-        <BookingItemCardStyled customWidht="242px">
+        <BookingItemCardStyled customWidht="16%">
             <ImageGuest image={item.item.guest.image}/>
-            <span>{item.item.guest.firstName}<br />{item.item.guest.lastName}</span>
+            <span>{item.item.guest.firstName}, {item.item.guest.lastName}</span>
         </BookingItemCardStyled>
-        <BookingItemCardStyled customWidht="237px">{orderDateFormated}</BookingItemCardStyled>
-        <BookingItemCardStyled customWidht="227px">{checkInFormated}</BookingItemCardStyled>
-            <BookingItemCardStyled customWidht="227px">{checkOutFormated}</BookingItemCardStyled>
-        <BookingItemCardStyled customWidht="240px">
+        <BookingItemCardStyled customWidht="13%">{orderDateFormated}</BookingItemCardStyled>
+        <BookingItemCardStyled customWidht="13%">{checkInFormated}</BookingItemCardStyled>
+            <BookingItemCardStyled customWidht="13%">{checkOutFormated}</BookingItemCardStyled>
+        <BookingItemCardStyled customWidht="13%">
             <ModalSpecialRequest specialRequest={item.item.specialRequest}/>
         </BookingItemCardStyled>
-        <BookingItemCardStyled customWidht="186px">{item.item.room.type}</BookingItemCardStyled>
-        <BookingItemCardStyled customWidht="126px">$ {item.item.price}</BookingItemCardStyled>
-        <BookingItemCardStyled onClick={e => handleOpen(e, item.item._id)} customWidht="206px" id="status" status={item.item.status}>
+        <BookingItemCardStyled customWidht="10%">{item.item.room.type}</BookingItemCardStyled>
+        <BookingItemCardStyled customWidht="6%">$ {item.item.price}</BookingItemCardStyled>
+        <BookingItemCardStyled onClick={e => handleOpen(e, item.item._id)} customWidht="12%" id="status" status={item.item.status}>
             {item.item.status}
         </BookingItemCardStyled>
-        <BookingItemCardStyled  style={{marginRight: 20}} customWidht="40px">
+        <BookingItemCardStyled  style={{marginRight: 20}} customWidht="3%">
             <AlertDialog item={item}/>
         </BookingItemCardStyled>
     </BookingCardStyled>
@@ -58,7 +58,7 @@ const ImageGuest = styled.div`
 
 const BookingCardStyled = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     text-align: center;
     flex-direction: row;

@@ -7,16 +7,30 @@ const styleImg = {
   height: "30px",
 };
 
+/*
+    * Foto
+- Número de la habitación.
+- ID de la habitación
+- Room Type (sustituir por Bed Type). Tipo de habitación
+- Amenities (sustituir por Facilities). Servicios incluidos
+- Price (sustituir por Rate). Precio regular
+- Offer Price (campo nuevo). Precio oferta
+- Status Available / Booked. Estado en el día en curso (Disponible / Ocupada)
+    */
+
+
 export const CardRoom = ({
   index,
   moveCard,
-  id,
-  room_name,
-  bed_type,
-  room_floor,
-  facilities,
-  status,
-  image,
+  images,
+    number,
+    name,
+    _id,
+    type,
+    facilities,
+    price,
+    priceOffer,
+    status
 }) => {
   const ref = useRef(null);
   const [{ handlerId }, drop] = useDrop({
@@ -68,39 +82,41 @@ export const CardRoom = ({
   const [{ isDragging }, drag] = useDrag({
     type: "CARD",
     item: () => {
-      return { id, index };
+      return { _id, index };
     },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
   });
   drag(drop(ref));
+
   return (
     <RoomCardStyled ref={ref} data-handler-id={handlerId}>
-      <RoomItemCardStyled>
-        <img style={styleImg} src={image} alt="" />
+      <RoomItemCardStyled customWidht="5%">
+        <img style={styleImg} src={images[0]} alt="" />
       </RoomItemCardStyled>
-      <RoomItemCardStyled>{room_name}</RoomItemCardStyled>
-      <RoomItemCardStyled>{bed_type}</RoomItemCardStyled>
-      <RoomItemCardStyled>{room_floor}</RoomItemCardStyled>
-      <RoomItemCardStyled>{facilities}</RoomItemCardStyled>
-      <RoomItemCardStyled>{image}</RoomItemCardStyled>
-      <RoomItemCardStyled>{status}</RoomItemCardStyled>
+      <RoomItemCardStyled customWidht="20%">
+          <span>{name}</span>
+          <p>{_id}</p>
+      </RoomItemCardStyled>
+      <RoomItemCardStyled customWidht="15%">{type}</RoomItemCardStyled>
+      <RoomItemCardStyled customWidht="33%">{facilities}</RoomItemCardStyled>
+      <RoomItemCardStyled customWidht="5%">{price}</RoomItemCardStyled>
+      <RoomItemCardStyled customWidht="5%">{priceOffer}</RoomItemCardStyled>
+      <RoomItemCardStyled customWidht="10%" status={status}>{status}</RoomItemCardStyled>
     </RoomCardStyled>
   );
 };
-
 const RoomCardStyled = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     text-align: center;
     flex-direction: row;
     background-color: white;
     border-radius: 8px;
     height: ${p => p.theme.sizes.cardHeight}px;
-    width: 90%;
-    white-space:nowrap;
+    width: 95%;
     margin: 3px;
     :hover {
         background-color: ${props => props.theme.colors.bg};
@@ -112,9 +128,17 @@ const RoomItemCardStyled = styled.div`
     text-align: left;
     font-size: 15px;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     width: ${p => p.customWidht}};
+    margin: 0.5%;
+
+    p{
+        font-size: 13px;
+        margin: 0;
+        color: ${p=>p.theme.colors.mainGreen};
+    }
 
     i{
         margin-inline: 20px;
@@ -124,8 +148,38 @@ const RoomItemCardStyled = styled.div`
     }
 
     ${({ status }) =>
-        status === "Check In" &&
+        status === "booked" &&
         `
+        &:hover{
+            cursor:pointer;
+        }
+        align-items: center;
+        justify-content: center;
+        text-size: 12px;
+        border-radius: 20px;
+        background-color: #FFEDEC;
+        border-radius: 12px;
+        color: red;
+        font-weight: bold;
+        height: 70%;
+        width: ${p=>p.customWidht};
+    `}
+
+    ${({ status }) =>
+        status === "available" &&
+        `
+        &:hover{
+            cursor:pointer;
+        }
+        align-items: center;
+        justify-content: center;
+        text-size: 12px;
+        border-radius: 20px;
+        background: #E8FFEE;
+        color: #5AD07A;
+        font-weight: bold;
+        height: 70%;
+        width: ${p=>p.customWidht};
     `}
 
 `;

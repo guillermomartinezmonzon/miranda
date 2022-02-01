@@ -63,11 +63,11 @@ export default function ModalSpecialRequest({specialRequest}) {
       <div >
       {
       specialRequest ?
-      <Button color="success" variant="contained" onClick={handleClickOpen}>
+      <Button color="success" size='small' variant="outlined" onClick={handleClickOpen}>
         Special Request 
       </Button>
       :
-      <Button color="success" variant="outlined" disabled>
+      <Button color="success" size='small' variant="outlined" disabled>
         Special Request 
       </Button>
       }

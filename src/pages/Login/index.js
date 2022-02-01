@@ -2,8 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { loginUser, useAuthDispatch } from "../../context";
 import {GreenBtn} from "../../styles/buttons/GrenBtn";
-import {RedButton} from "../../styles/buttons/RedBtn";
-import {LoginStyled} from "./Login.styled";
 
 function Login() {
   console.log("Login");
@@ -20,15 +18,6 @@ function Login() {
       let response = await loginUser(dispatch, { email, password });
       if (!response.token) alert(response);
       navigate("/");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleSignUp = async (e) => {
-    e.preventDefault();
-    try {
-      navigate("/signup");
     } catch (error) {
       console.log(error);
     }

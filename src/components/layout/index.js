@@ -1,26 +1,19 @@
-import {useEffect} from "react";
-import {useSelector} from "react-redux";
 import styled from "styled-components";
-import {checkAPI} from "../../api";
 import SideMenu from "../SideMenu/SideMenu";
 import TopMenu from "../TopMenu/TopMenu";
 
 export default function Layout(props){
-    let apiOK = false;
-    useEffect(()=>{
-        apiOK = checkAPI()
-    },[])
-
+     
     return (
-    <Container>
-      <SideMenu />
-      <PanelContainerStyled id="panelIn">
-          <TopMenu title={props.title}/>
-          <InContainerStyled>
-              {apiOK ? props.children : <h2>No internet connection</h2>}
-          </InContainerStyled>
-      </PanelContainerStyled>
-    </Container>
+        <Container>
+          <SideMenu />
+          <PanelContainerStyled id="panelIn">
+              <TopMenu title={props.title}/>
+              <InContainerStyled>
+                  {props.children}
+              </InContainerStyled>
+          </PanelContainerStyled>
+        </Container>
     )
 }
 

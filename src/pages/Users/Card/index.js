@@ -1,15 +1,25 @@
 import styled from 'styled-components';
+
 export default function CardUser(user) {
+
+  const dateFormated = user.user.startDate && new Date(`${user.user.startDate}`)
+        .toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
+
   return (
     <UserCardStyled key={user.user.id}>
-      <UserItemCardStyled customWidht={10}>{user.user.name}</UserItemCardStyled>
-      <UserItemCardStyled customWidht={10}>{user.user.email}</UserItemCardStyled>
-      <UserItemCardStyled customWidht={10}>{user.user.startDate}</UserItemCardStyled>
-      <UserItemCardStyled customWidht={10}>{user.user.phone}</UserItemCardStyled>
-      <UserItemCardStyled customWidht={10}>{user.user.description}</UserItemCardStyled>
-      <UserItemCardStyled customWidht={10}>{user.user.status}</UserItemCardStyled>
-      <UserItemCardStyled customWidht={10}>{user.user.job}</UserItemCardStyled>
-      <UserItemCardStyled customWidht={10}>{user.user.image}</UserItemCardStyled>
+        <img src={user.user.image} style={{marginLeft: '3%', width: '2%'}} alt=""/>
+        <UserItemCardStyled customWidht="18%">
+            <h3>{user.user.name}</h3>
+            <span>{user.user.job}</span>
+            <p>{user.user._id}</p>
+        </UserItemCardStyled>
+        <UserItemCardStyled customWidht="15%">{dateFormated}</UserItemCardStyled>
+        <UserItemCardStyled customWidht="15%">
+            <span>{user.user.phone}</span>
+            <p>{user.user.email}</p>
+        </UserItemCardStyled>
+        <UserItemCardStyled customWidht="33%">{user.user.description}</UserItemCardStyled>
+        <UserItemCardStyled status={user.user.status} customWidht="10%">{user.user.status}</UserItemCardStyled>
     </UserCardStyled>
   );
 }
@@ -22,8 +32,8 @@ const UserCardStyled = styled.div`
     flex-direction: row;
     background-color: white;
     border-radius: 8px;
-    height: ${p => p.theme.sizes.cardHeight}px;
-    width: 90%;
+    height: 120px;
+    width: 95%;
     white-space:nowrap;
     margin: 3px;
     :hover {
@@ -33,23 +43,52 @@ const UserCardStyled = styled.div`
 `
 
 const UserItemCardStyled = styled.div`
+    p{
+        margin: 0;
+    }
+    span{
+        margin: 0;
+        color: green;
+    }
+    h3{
+        margin: 0;
+    }
+    white-space: nowrap;
+    margin: 3%;
+    overflow: hidden;
     text-align: left;
     font-size: 15px;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     width: ${p => p.customWidht}};
 
-    i{
-        margin-inline: 20px;
-        background:none;
-        border:none;
-        cursor: pointer;
-    }
-
     ${({ status }) =>
-        status === "Check In" &&
+        status === "inactive" &&
         `
+        &:hover{
+            cursor:pointer;
+        }
+        align-items: center;
+        justify-content: center;
+        text-size: 14px;
+        color: red;
+        font-weight: bold;
+        width: ${p=>p.customWidht};
+    `}
+    ${({ status }) =>
+        status === "active" &&
+        `
+        &:hover{
+            cursor:pointer;
+        }
+        align-items: center;
+        justify-content: center;
+        text-size: 14px;
+        color: green;
+        font-weight: bold;
+        width: ${p=>p.customWidht};
     `}
 
 `;
