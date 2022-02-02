@@ -3,7 +3,7 @@ import SideMenu from "../SideMenu/SideMenu";
 import TopMenu from "../TopMenu/TopMenu";
 
 export default function Layout(props){
-     
+
     return (
         <Container>
           <SideMenu />

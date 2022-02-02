@@ -24,21 +24,6 @@ export function Head(){
 
     )
 }
-// const Dates = () => {
-//   const [selectedDayRange, setSelectedDayRange] = useState({
-//     from: null,
-//     to: null
-//   });
-//   return (
-//     <DatePicker
-//       value={selectedDayRange}
-//       onChange={setSelectedDayRange}
-//       inputPlaceholder="Select a Check In & Check Out"
-//       shouldHighlightWeekends
-//       inputClassName="date-picker"
-//     />
-//   );
-// };
 
 const Dates = () => {
   const [selectedDayRange, setSelectedDayRange] = useState({
@@ -57,7 +42,7 @@ const Dates = () => {
       placeholder={selectedDayRange}
       value={
         selectedDayRange.from && selectedDayRange.to ?
-              ` ${months[selectedDayRange.from.month-1]}, ${selectedDayRange.from.day} to ${months[selectedDayRange.to.month-1]}, ${selectedDayRange.to.day}`
+          `${selectedDayRange.from.day} ${months[selectedDayRange.from.month-1]} ${selectedDayRange.from.year} - ${months[selectedDayRange.to.month-1]} ${selectedDayRange.to.day} ${selectedDayRange.to.year}`
         :
         `Select your day range`
       }
@@ -89,7 +74,7 @@ const HeadContainer = styled.div`
 
 const HeadLeft = styled.div`
     display: flex;
-    height: 100%;
+    height: 50%;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
@@ -101,7 +86,7 @@ const HeadRight = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-end;
     width: 50%;
 `
 const StyledLink = styled(Link)`
@@ -132,7 +117,7 @@ const CalendarHead = styled.div`
         border: none;
         padding: 15px;
         font-size: 16px;
-        width: 100%;
+        width: 280px;
         background-color: ${p => p.theme.colors.mainGreen};
         height: 100%;
         justify-content: space-between;

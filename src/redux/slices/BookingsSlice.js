@@ -20,18 +20,7 @@ export const fetchBooking = createAsyncThunk(
           });
     }
 );
-// export const fetchBookingsList = createAsyncThunk(
-//   "bookings/fetchBookingsList",
-//   async (thunkAPI) => {
-//     const res = await fetch("data/bookings.json", {
-//       headers: {
-//         "Content-Type": "application/json",
-//         Accept: "application/json",
-//       },
-//     }).then((data) => data.json());
-//     return res;
-//   }
-// );
+
 
 export const BookingsSlice = createSlice({
   name: "bookings",
@@ -51,7 +40,7 @@ export const BookingsSlice = createSlice({
       state.booking = payload;
     },
     [fetchBooking.rejected]: (state) => {
-      state.loading = false;
+      state.loading = true;
     },
 
     [fetchBookingsList.pending]: (state) => {
@@ -62,7 +51,7 @@ export const BookingsSlice = createSlice({
       state.bookingsList = payload;
     },
     [fetchBookingsList.rejected]: (state) => {
-      state.loading = false;
+      state.loading = true;
     },
 
   },

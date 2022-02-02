@@ -52,7 +52,7 @@ export default function Users() {
       <Layout title="Users">
           <Head/>
           <Header/>
-          {!loading && <RenderTableUsers/>}
+          {!loading ? <RenderTableUsers/> : <h2>Loading...</h2>}
           <ReactPaginate
               previousLabel={"<"}
               nextLabel={">"}

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { useLocation } from "react-router";
-import Logo from "./logo";
 import UserLogged from "./UserLogged/UserLogged";
 import {Link} from "react-router-dom";
 
@@ -26,14 +25,51 @@ export default function SideMenu() {
                 Users
               </LinkStyled>
           </LinksContainer>
-      <UserLogged />
+          <UserLogged />
+          <FooterSideMenu/>
     </StyledSideMenu>
+  );
+}
+
+function FooterSideMenu(){
+    return(
+        <div className="footer">
+            <h3>Hotel Admin Dashboard</h3>
+            <span>&copy; 2022 All Rights Reserved</span>
+            <p>Made with ♥  for gmonzon</p>
+        </div>
+    )
+}
+
+function Logo() {
+  return (
+    <div className="logo">
+          <div className="hotel-container">
+            <img className="hotel" src="./img/hotel2.png" />
+            <img
+              className="hotel-1"
+              src="./img/hotel.png"
+            />
+          </div>
+          <div className="flex-col">
+            <img
+              className="trazado-1948"
+              src="./img/trazado.png"
+            />
+            <div
+              className="hotel-admin-dashboard"
+            >
+              Hotel Admin Dashboard
+            </div>
+          </div>
+    </div>
   );
 }
 
 const StyledSideMenu = styled.div`
   position: fixed;
   width: 18%;
+  height: 100%;
   top: 0;
   left: 0;
   z-index: 1;
@@ -41,7 +77,22 @@ const StyledSideMenu = styled.div`
   flex-direction: column;
   padding: 32px 0;
   align-items: center;
+  justify-content: center;
   background-color: ${props => props.theme.colors.bg};
+
+  .footer {
+        margin-top: 6%;
+        height: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-self: flex-end;
+        align-self: center;
+      color: gray;
+      font-size: 14px;
+      h3{
+         color: black;
+      }
+  }
 
   .logo {
       box-shadow: 13px 3px 40px #00000005;
@@ -50,7 +101,7 @@ const StyledSideMenu = styled.div`
       height: 57px;
       justify-content: center;
       margin-right: 30px;
-      width: 100%;
+      width: 90%;
 
       .hotel-container {
           align-items: flex-start;

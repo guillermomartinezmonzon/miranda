@@ -17,10 +17,10 @@ export const NormalMode = () => {
           <img
             width="60"
             height="60"
-            src="https://cdn.schoolstickers.com/products/en/819/10MM_SMILE-03.png"
+              src="img/myface.jpg"
             alt=""
           />
-          <h2>{userDetails && userDetails.user.name}</h2>
+          <h3>{userDetails && userDetails.user.name}</h3>
           <p>{userDetails.user.phone}</p>
           <h3>{userDetails.user.email}</h3>
           <p><GreenBtn onClick={handleEdit}>Edit</GreenBtn></p>  

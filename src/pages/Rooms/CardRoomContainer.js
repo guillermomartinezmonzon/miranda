@@ -7,6 +7,7 @@ import {
 import update from "immutability-helper";
 import { useCallback, useEffect, useState } from "react";
 import { CardRoom } from "./CardRoom";
+import ReactPaginate from "react-paginate";
 
 const style = {
   width: "100%",
@@ -24,7 +25,23 @@ export const CardRoomContainer = () => {
     dispatch(fetchRoomsList());
   }, []);
 
-  const [roomsOrder, setRoomsOrder] = useState(roomsList);
+    // Pagination
+    const [offset, setOffset] = useState(0);
+    const [perPage] = useState(8);
+    const [pageCount, setPageCount] = useState(0);
+    const [roomsData, setRoomsData] = useState([]); // rooms pagination
+    const [roomsOrder, setRoomsOrder] = useState([]); // rooms order
+
+    useEffect(() => {
+        setPageCount(Math.ceil(roomsList.length/perPage))
+        setRoomsData(roomsList.slice(offset, offset+perPage))
+        setRoomsOrder(roomsData);
+    }, [offset, roomsList])
+
+    const handlePageClick = (e) => {
+        const selectedPage = e.selected;
+        setOffset((selectedPage + 1)*perPage)
+    }
 
   const moveCard = useCallback(
     (dragIndex, hoverIndex) => {
@@ -37,10 +54,8 @@ export const CardRoomContainer = () => {
           ],
         })
       );
-      dispatch(setRooms(roomsOrder));
-    },
-    [roomsOrder, roomsList]
-  );
+    }, [roomsOrder, roomsData]);
+    
   const renderCard = (room, index) => {
     const {
         images,
@@ -79,6 +94,18 @@ export const CardRoomContainer = () => {
       <div style={style}>
         {roomsOrder.map((room, i) => renderCard(room, i))}
       </div>
+      <ReactPaginate
+          previousLabel={"<"}
+          nextLabel={">"}
+          breakLabel={"..."}
+          breakClassName={"break-me"}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageClick}
+          containerClassName={"pagination"}
+          subContainerClassName={"pages pagination"}
+          activeClassName={"active"}/>
     </>
   );
 };

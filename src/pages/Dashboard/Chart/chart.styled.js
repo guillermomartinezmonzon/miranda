@@ -39,6 +39,9 @@ const ContainerStyled = styled.div`
     .bar2 {
       fill: ${props => props.theme.colors.mainRed};
     }
+    .bar3 {
+      fill: ${props => props.theme.colors.mainOrange};
+    }
 
     text {
       font-size: 12px;
